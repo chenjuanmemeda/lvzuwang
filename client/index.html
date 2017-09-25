@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>侣租--遇见有趣的灵魂</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="css/cityPicker.css">
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="js/dateRange.js"></script>
+    <script type="text/javascript" src="js/monthPicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/dateRange.css"/>
+    <link rel="stylesheet" type="text/css" href="css/monthPicker.css"/>
+    <link rel="stylesheet" href="components/popwindow/popwindow.css">
+    <link rel="stylesheet" href="components/login/login.css">
+    <style>
+        body{
+            /*overflow: hidden;*/
+        }
+        .all_bar{
+            width: 100%;
+            height: 170px;
+            top: 0;
+            z-index: 999;
+            position: absolute;
+            background:-webkit-gradient(linear, 0 0, 0 bottom, from(rgba(0,0,0,0.5)), to(rgba(0, 0, 255, 0)));;
+        }
+        .head_bar {
+            width: 71.3%;
+            height: 170px;
+            z-index: 100;
+            /*border: 1px solid black;*/
+        }
+        .head_bar_con {
+
+            width: 100%;
+            height: 63px;
+            padding: 31px 20px 0;
+        }
+        /*.head_bar_con{*/
+            /*margin: 0 auto;*/
+            /*width: 960px;*/
+            /*height:170px;*/
+        /*}*/
+        .head_bar_con>.logo_index {
+            width: 128px;
+            height: 61px;
+            display: block;
+            float: left;
+            margin-top: -20px;
+            margin-left: 0;
+        }
+        .nav_R{
+            float: right;
+            font-size: 18px;
+            padding-right: 30px;
+            padding-top: 15px;
+        }
+        .nav_R>li {
+            height: 44px;
+            line-height: 44px;
+            display: inline-block;
+            z-index: 90;
+            padding-left: 20px;
+            font-family: "microsoft yahei";
+        }
+         .nav_R>.after{
+            display: none;
+        }
+         .nav_R>.after2{
+            display: none;
+        }
+        .nav_R>li>a{
+            color: white;
+        }
+        .nav_R>li>a:hover{
+            color:#D0104c;
+        }
+        .banner_con{
+            width: 100%;
+            height: 600px;
+            position: relative;
+        }
+        /*.banner{*/
+        /*width: 100%;*/
+        /*hight:768px;*/
+        /*position: relative;*/
+        /*}*/
+        .banner_con>ul{
+            position: absolute;
+            width: 100%;
+            /*display: inline-block;*/
+            z-index:10;
+            cursor: pointer;
+            top: 550px;
+            right: 50px;
+        }
+
+        .banner_con>a>img{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+            /*display: inline-block;*/
+            /*float: left;*/
+        }
+        .banner_con>ul>li{
+            width: 15px;
+            height: 15px;
+            line-height: 15px;
+            border-radius: 50%;
+            float: right;
+            background-color: white;
+            margin-left: 10px;
+            opacity: 0.4;
+            color: rgba(0,0,0,0);
+        }
+        .local{
+            position: absolute;
+            top:145px;
+            left: -200px;
+        }
+        .search_box{
+            width: 960px;
+            height: 75px;
+            position: absolute;
+            border-radius: 10px;
+            background-color: white;
+            bottom: -350px;
+            left: 203px;
+        }
+        .search_box>ul{
+            width: 100%;
+            height: 100%;
+            display: inline-block;
+            float: left;
+        }
+        .search_box>ul>li{
+            display: inline-block;
+            float: left;
+            text-align: center;
+            line-height: 70px;
+            padding-left: 20px;
+        }
+        .search_box>ul>li>img{
+            vertical-align: middle;
+        }
+        .search_box>ul>li:nth-child(2){
+            position: absolute;
+            left: 250px;
+        }
+        .search_box>ul>li:nth-child(3){
+            width: 299px;height:100%;background-color:#13DBAD;
+            display: block;
+            border-radius: 0 10px 10px 0;
+            position: absolute;
+            left: 641px;
+        }
+        /*--------------------- all-head over  ---------------------------*/
+        .world{
+            width: 100%;
+            height: 200px;
+        }
+        .world>img{
+            padding-top:50px;
+            padding-left:40%;
+        }
+        .pics_animate{
+            width: 960px;
+            margin: 0 auto;
+            position: relative;
+            height: 2200px;
+        }
+        .pics_animate>.first{
+            width: 960px;
+            height: 376px;
+            margin: 0 auto;
+            padding-bottom: 37px;
+        }
+        .pics_animate>.second>div{
+            position: absolute;
+        }
+
+        .second,.third,.fourth,.fifth,.sixth,.seventh{
+            cursor:pointer;
+        }
+        .txt{width:100%; background:url(images/1px.png) repeat;position:absolute;left:0;bottom:0;color:#fff;font-family:"微软雅黑";}
+        .txt h3{font-size:50px;font-weight:100;text-align:center;opacity:0;font-family: "Adobe 黑体 Std R";}
+        .txt p{font-size:14px;text-align:center;}
+
+        /*---------------- foot -----------------------------*/
+
+        .foot_v2{width: 955px;margin: 20px auto;text-align: center;overflow: hidden;}
+        .foot_T{font-size: 14px;font-family:"microsoft yahei";color: #f05b72;}
+        .see_ul{width: 102px;margin:5px auto 35px;overflow: hidden;}
+        .see_ul li{float: left;margin: 0 8px;}
+        .icon_wx,.icon_wb{background: url(images/icon_head.png);background-position: 0 -208px;display: inline-block;width: 35px;height: 35px;}
+        .icon_wb{background-position: -45px -208px;}
+        .icon_wx:hover{background: url(images/icon_head.png);background-position: -90px -208px;}
+        .icon_wb:hover{background: url(images/icon_head.png);background-position: -135px -208px;}
+        .foot_ul{overflow: hidden;text-align: left;margin-bottom: 20px;}
+        .foot_ul li{float: left;width: 57px; margin: 0 32px 0 0;color: #959ea7;line-height: 24px;}
+        .foot_ul li a{color: #959ea7;white-space:nowrap;}
+        .guide{background: url(images/icon_head.png);background-position: 8px -258px;padding-top: 50px;display: inline-block;color: #959ea7;font-size: 14px;font-family:"microsoft yahei";}
+        .icon_fk{background: url(images/icon_head.png);background-position: -44px -258px;}
+        .guide_T{font-size: 14px;font-family:"microsoft yahei";}
+        .width_280{width: 282px!important;}
+        .width_280 a{margin-right: 7px;}
+        .width_100{width: 100px!important;}
+        .link_dl{color: #bdc3c7;text-align: left;}
+        .link_dl dt{float: left;width: 75px;font-size: 14px;font-family:"microsoft yahei";}
+        .link_dl dd{float: left;width: 865px;line-height: 24px;}
+        .link_dl dd a{color: #bdc3c7;margin-right:8px; white-space: nowrap;}
+        .foot_btm{text-align: center;color:#bdc3c7;line-height: 26px;clear:both;}
+        .foot_btm a{color:#bdc3c7;}
+        .width_274{width: 274px;}
+
+        .width_342{width: 342px !important;}
+        .online_kf{width:173px !important;white-space:nowrap;font-size: 12px;}
+        .online_kf a{display:inline-block;color: #fff !important;height: 22px;line-height: 22px;padding: 0 6px;background: #f05b72;margin-bottom: 5px;border-radius: 2px;}
+        .online_kf a i{display:inline-block;width: 14px;height: 14px;background-repeat: no-repeat;background-position: 0 0;vertical-align: middle;margin-right: 4px;}
+        .online_kf p{color: #959ea7;line-height: 20px;}
+    </style>
+</head>
+<body>
+    <div class="all_bar">
+        <div class="head_bar"  data-0="position:absolute;background-color:rgba(0,0,0,0)" data-800="position:fixed;top:0;background-color:rgba(0,0,0,0)" data-edge-strategy="set" style="position: absolute;left: 194px;" data-801="background-color:rgba(76,75,75,0.5);">
+            <div class="head_bar"  data-0="position:absolute;" data-800="position:fixed;top:0;background-color:rgba(0,0,0,0)" data-edge-strategy="set" style="position: absolute;left: 194px;" data-801="background-color:rgba(76,75,75,0.5);">
+            <div class="head_bar_con">
+                <a href="index.html" class="logo_index"><img src="images/组%203.png"></a>
+                
+                    <!-- <li><a href="#">登录</a></li>
+                    <li><a href="#"></a></li> -->
+                <div id="app">
+                <ul class="nav_R">
+                        <login :is-show="isShow" @close-window="closeWindow"></login>  
+                        
+                        <li class="before"><a href="#" @click="showWindow">登录</a></li>
+                       <li class="before"><a href="register.html">注册</a></li>
+                         <li class="after"><a href="fkindex.html">房客信息</a></li>
+                          <li class="after2"><a href="fdindex.html">房东信息</a></li>
+                        <li><a href="fbindex.html">发布房源</a></li>
+                    </div>
+                <!-- popwindow组件 -->
+                    <template id="popwindow">
+                        <transition name="fade">
+                            <div class="overlay" v-show="isShow">
+                                <div class="content">
+                                    <slot name="header"></slot>
+                                    <slot name="body"></slot>
+                                    <slot name="footer"></slot>
+                                </div>
+                            </div>
+                        </transition>
+                    </template>
+
+                <!-- login组件 -->
+                    <template id="login">
+                        <popwindow :is-show="isShow">
+                            
+                        <div slot='header' class='login_header'>
+                                <p @click="closeWindow"><img src="./images/cancel.png" alt=""></p>
+                                <span class="log_title">登录</span>
+                                <span class="reg_link">没有账号？<a href="register.html" ><i>马上注册</i></a></span>
+                            </div>
+                            <div slot='body' class="login_body">
+                                
+                                <p v-show="showTips">{{tips}}</p>   
+                                 
+                                    <img src="./images/admin.png" class="img_user" alt="">
+                                    <input type="text" id="username" placeholder="请输入用户名" onfocus="this.placeholder=''" onblur="this.placeholder='请输入用户名'" v-model="findItem.username"
+                                    >
+                                    <br>
+                                    <img src="./images/lock.png" class="img_lock" alt="">
+                                    <input type="password" id="password" placeholder="请输入密码" onfocus="this.placeholder=''" onblur="this.placeholder='请输入密码'"  v-model="findItem.password">
+                             
+                                <div class="btn" @click="loginSubmit">
+                                    <span><b>登录</b></span>
+                                </div>
+                                <a href="#" @click="joke">忘记密码？</a>
+                                <hr>
+                            </div>
+                            <div slot='footer' class="login_footer">
+
+                                <p>用第三方账号直接登录</p>
+                                <div class="sina"><a href=""><img src="./images/weibo.png" alt=""></a></div>
+                                <div class="qq"><a href=""><img src="./images/qq.png" alt=""></a></div>
+                                <div class="douban"><a href=""><img src="./images/douban.png" alt=""></a></div>
+                                <div class="renren"><a href=""><img src="./images/renren.png" alt=""></a></div>
+                            </div>
+
+                        </popwindow>
+                    </template>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <div style="padding:1em;" data-0="display:none;" data-800="display:block;" data-anchor-target=".all_bar" data-edge-strategy="set">&nbsp;</div>
+    <div class="banner_all">
+        <div class="banner_con" id="banner_con">
+                <a href="javascript:void(0)"><img src="images/2.jpg"></a>
+                <a href="javascript:void(0)"><img src="images/1.jpg"></a>
+                <a href="javascript:void(0)"><img src="images/3.jpg"></a>
+                <a href="javascript:void(0)"><img src="images/4.jpg"></a>
+                <ul class="banner_ul">
+                   <li>1</li>
+                   <li>2</li>
+                   <li>3</li>
+                   <li>4</li>
+                </ul>
+        </div>
+            <div class="search_box">
+                <ul>
+                    <li><img src="images/local.png"></li>
+                    <li><img src="images/celinda.png"></li>
+                    <li><img src="images/组%205.png"></li>
+                </ul>
+                <div class="local">
+                    <input type="text" id="cityChoice"  value="城市或目的地" style="line-height:50px;border: none;position: absolute;left: 275px;bottom:83px;font-size:30px;width: 180px">
+                    <input type="hidden" id="province" value="">
+                    <input type="hidden" id="city" value="">
+                </div>
+                <div class="time" style="position: absolute;left: 300px">
+                    <div class="wrapper">
+                        <a href="javascript:;" id="aRecent7DaysDemo3" style="color: #959ea7" >最近七天</a>
+                    </div>
+                        <!--<p style="font-size:30px;color: #333333;font: 30px /1.5 Tahoma, Helvetica, 'SimSun', sans-serif;">入住离开时间</p>-->
+                    <div class="ta_date" id="div_date_demo3" style="position: absolute;top: 0;left: 20px">
+                        <p style="position: absolute;top: 14px;left:20px;font: 30px /1.5 Tahoma, Helvetica, 'SimSun', sans-serif;color: #333333;">入住离开时间</p>
+                        <span class="date_title" id="date_demo3" style="display:block;width: 300px;height:60px;border: none;"></span>
+                        <a class="opt_sel" id="input_trigger_demo3" href="#" style="display: none">
+                            <i class="i_orderd"></i>
+                        </a>
+                    </div>
+                    <div id="datePicker"></div>
+                    <br/>
+                    <script type="text/javascript">
+                        var dateRange = new pickerDateRange('date_demo3', {
+                            aRecent7Days : 'aRecent7DaysDemo3', //最近7天
+                            isTodayValid : false,
+                            //startDate : '2013-04-14',
+                            //endDate : '2013-04-21',
+                            //needCompare : true,
+                            //isSingleDay : true,
+                            //shortOpr : true,
+                            defaultText : ' 至 ',
+                            inputTrigger : 'input_trigger_demo3',
+                            theme : 'ta',
+                            success : function(obj) {
+                                $("#dCon_demo3").html('开始时间 : ' + obj.startDate + '<br/>结束时间 : ' + obj.endDate);
+                            }
+                        });
+
+                    </script>
+                </div>
+            </div>
+    </div>
+    <div class="world">
+        <img src="images/世界很美，.png">
+    </div>
+    <div class="pics_animate">
+        <div class="first"><img src="images/有空.png"></div>
+        <div class="second">
+            <div class="second_left" style="position: absolute;top:412px;" data-300-top="left:0" data-600-top="left:-100%;"><a href="fyindex.html"><img src="images/四川2.png"><div class="txt"><h3>成都</h3><p></p></div></a></div>
+            <div class="second_right" style="position: absolute;top:412px;" data-300-top="right:0" data-600-top="right:-100%;"><img src="images/南京3.png"><div class="txt"><h3>南京</h3><p></p></div></div>
+        </div>
+        <div class="third">
+            <div class="third_left" style="position: absolute;top:825px;" data-300-top="left:0" data-600-top="left:-100%;"><img src="images/拉萨4.png"><div class="txt"><h3>拉萨</h3><p></p></div></div>
+            <div class="third_right" style="position: absolute;top:825px;" data-300-top="right:0" data-600-top="right:-100%;"><img src="images/重庆5%20.png"><div class="txt"><h3>重庆</h3><p></p></div></div>
+        </div>
+        <div class="fourth">
+                <div class="fourth_left" style="position: absolute;top:1238px;" data-300-top="left:0" data-600-top="left:-100%;"><img src="images/海南6.png"><div class="txt"><h3>海南</h3><p></p></div></div>
+                <div class="fourth_right" style="position: absolute;top:1042px;" data-300-top="right:0" data-600-top="right:-100%;"><img src="images/新疆7.png"><div class="txt"><h3>新疆</h3><p></p></div></div>
+        </div>
+        <div class="fifth">
+            <div class="fifth_left" style="position: absolute;top:1455px;" data-300-top="left:0" data-600-top="left:-100%;"><img src="images/香港8.png"><div class="txt"><h3>香港</h3><p></p></div></div>
+            <div class="fifth_right" style="position: absolute;top:1455px;" data-300-top="right:0" data-600-top="right:-100%;"><img src="images/青岛9.png"><div class="txt"><h3>青岛</h3><p></p></div></div>
+        </div>
+        <div class="sixth">
+            <div class="sixth_left" style="position: absolute;top:1672px;" data-300-top="left:0" data-600-top="left:-100%;"><img src="images/上海10.png"><div class="txt"><h3>上海</h3><p></p></div></div>
+            <div class="sixth_right" style="position: absolute;top:1868px;" data-300-top="right:0" data-600-top="right:-100%;"><img src="images/杭州11.png"><div class="txt"><h3>杭州</h3><p></p></div></div>
+        </div>
+        <!--<div class="seventh">-->
+            <!--<div class="seventh_right" style="position: absolute;top:2100px;"><img src="images/lm-project-12.jpg"></div>-->
+        <!--</div>-->
+    </div>
+    <div class="footer" style="width: 100%">
+        <div class="banner_bottom" style="width: 100%;height: 100%">
+            <img src="images/banner_bottom.png">
+        </div>
+        <div class="foot_v2">
+            <span class="foot_T">关注我们<br>虽然没有但还是可以关注一下</span>
+            <ul class="see_ul">
+                <li><a href="#ongo" class="icon_wx indexdialogpic" name="focusus"></a></li>
+                <li><a href="http://weibo.com/xzduanzu" target="_blank" class="icon_wb"></a></li>
+            </ul>
+            <ul class="foot_ul">
+                <li><a class="guide" href="http://www.xiaozhu.com/xzweb.php?op=Help_UserGuide&amp;type=tenant" target="_blank">房客指南</a></li>
+                <li><a class="guide icon_fk" href="http://www.xiaozhu.com/xzweb.php?op=Help_UserGuide&amp;type=landlord" target="_blank">房东指南</a></li>
+                <li>
+                    <span class="guide_T">关于我们</span>
+                    <a href="http://www.xiaozhu.com/aboutus" target="_blank">关于侣租</a>
+                    <a href="http://www.xiaozhu.com/contactus" target="_blank">联系我们</a>
+                </li>
+                <li>
+                    <span class="guide_T">网站帮助</span>
+                    <a href="http://www.xiaozhu.com/help/index" target="_blank">帮助中心</a>
+                    <a href="http://www.xiaozhu.com/sitemap.html" target="_blank">网站地图</a>
+                </li>
+                <li class="width_280">
+                    <span class="guide_T">网站协议</span><br>
+                    <a href="http://www.xiaozhu.com/help/service" target="_blank">服务协议</a>
+                    <a href="http://www.xiaozhu.com/help/landlordRule" target="_blank">房东规则</a>
+                    <a href="http://www.xiaozhu.com/help/tenantRule" target="_blank">房客规则</a>
+                    <a href="http://www.xiaozhu.com/help/auditRule" target="_blank">房源上线标准</a>
+                    <a href="http://www.xiaozhu.com/help/privacy" target="_blank">隐私保护</a>
+                    <a href="http://www.xiaozhu.com/help/copyright" target="_blank">版权声明</a>
+                    <a href="http://www.xiaozhu.com/help/disclaimer" target="_blank">免责声明</a>
+                    <a href="http://www.xiaozhu.com/help/intellectualProperty" target="_blank">知识产权声明</a>
+                    <a href="http://www.xiaozhu.com/help/commentRule" target="_blank">点评发布规则</a>
+                </li>
+                <li class="width_100 bigFont">
+                    <span class="guide_T">客服电话</span><br>
+                    400  8320  8820
+                </li>
+                <li class="width_100 bigFont">
+                    <span class="guide_T">客服邮箱</span><br>
+                    service@lvzu.com
+                </li>
+            </ul>
+            <dl class="link_dl">
+                <dt>城市导航</dt>
+                <dd>
+                    <a target="_blank" href="http://bj.xiaozhu.com/">北京短租房</a>
+                    <a target="_blank" href="http://sh.xiaozhu.com/">上海短租房</a>
+                    <a target="_blank" href="http://nj.xiaozhu.com/">南京短租房</a>
+                    <a target="_blank" href="http://cd.xiaozhu.com/">成都短租房</a>
+                    <a target="_blank" href="http://gz.xiaozhu.com/">广州短租房</a>
+                    <a target="_blank" href="http://cq.xiaozhu.com/">重庆短租房</a>
+                    <a target="_blank" href="http://wh.xiaozhu.com/">武汉短租房</a>
+                    <a target="_blank" href="http://dl.xiaozhu.com/">大连短租房</a>
+                    <a target="_blank" href="http://sanya.xiaozhu.com/">三亚短租房</a>
+                    <a target="_blank" href="http://lijiang.xiaozhu.com/">丽江短租房</a>
+                    <a target="_blank" href="http://tj.xiaozhu.com/">天津短租房</a>
+                    <a target="_blank" href="http://xianggang.xiaozhu.com/">香港短租房</a>
+                    <a target="_blank" href="http://cs.xiaozhu.com/">长沙短租房</a>
+                    <a target="_blank" href="http://wx.xiaozhu.com/">无锡短租房</a>
+                    <a target="_blank" href="http://km.xiaozhu.com/">昆明短租房</a>
+                    <a target="_blank" href="http://jn.xiaozhu.com/">济南短租房</a>
+                    <a target="_blank" href="http://xm.xiaozhu.com/">厦门短租房</a>
+                    <a target="_blank" href="http://qd.xiaozhu.com/">青岛短租房</a>
+                    <a target="_blank" href="http://zz.xiaozhu.com/">郑州短租房</a>
+                    <a target="_blank" href="http://xa.xiaozhu.com/">西安短租房</a>
+                    <a target="_blank" href="http://hz.xiaozhu.com/">杭州短租房</a>
+                    <a target="_blank" href="http://sz.xiaozhu.com/">深圳短租房</a>
+                    <a target="_blank" href="http://sy.xiaozhu.com/">沈阳短租房</a>
+                    <a target="_blank" href="http://su.xiaozhu.com/">苏州短租房</a>
+                </dd>
+            </dl>
+            <dl class="link_dl">
+                <dt>友情链接</dt>
+                <dd>
+                    <a target="_blank" href="http://www.yixia.com/">一下科技</a>
+                    <a target="_blank" href="http://www.ibantang.com">半糖</a>
+                    <a target="_blank" href="http://www.tianxun.com/">天巡网</a>
+                    <a target="_blank" href="http://nj.tuniu.com/">南京旅游网</a>
+                    <a target="_blank" href="http://www.yododo.cn/">多多驿站</a>
+                    <a target="_blank" href="http://tianjin.8684.cn/">天津公交</a>
+                    <a target="_blank" href="http://hangzhou.fangtoo.com/">杭州房产网</a>
+                    <a target="_blank" href="http://lvyou.mangocity.com/">旅游网</a>
+                    <a target="_blank" href="http://www.82222919.com/">深圳旅行社</a>
+                    <a target="_blank" href="http://www.pintour.com/">驴友</a>
+                    <a target="_blank" href="http://www.mengyoo.com/">国内旅游</a>
+                    <a target="_blank" href="http://www.sfkkkkkkkkk.com/">沙发客</a>
+                    <a target="_blank" href="http://www.57go.com/">四川旅游</a>
+                    <a target="_blank" href="http://www.shidu.cn/">十渡旅游</a>
+                    <a target="_blank" href="http://bengbu.cncn.com/">蚌埠旅游</a>
+                    <a target="_blank" href="http://www.keyunzhan.com/chuzuche/">出租车电话</a>
+                    <a target="_blank" href="http://sh.to8to.com/">上海装修网</a>
+                    <a target="_blank" href="http://www.tieyou.com/fuxiagaotie/">福厦高铁</a>
+                    <a target="_blank" href="http://www.yidujia.com/">产权式酒店</a>
+                </dd>
+
+            </dl>
+            <div class="foot_btm">许可证号：<a target="_blank" href="http://www.miibeian.gov.cn" rel="nofollow">京ICP证140510号</a> &nbsp;&nbsp; <a href="http://www.anquan.org/s/www.xiaozhu.com" |="" name="mt8SMvYyRDI92b06nuDs8dPFapllCJYidqhM1WlOoGRZ9DWpbo" rel="nofollow" target="_blank">安全联盟</a> &nbsp;&nbsp; 深圳龙岗七个白雪公主与我有限公司  &nbsp;&nbsp; 地址：你猜   &nbsp;&nbsp;电话：110
+            </div>
+            <div style="width:300px;margin:0 auto;">
+                <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802020380" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="images/record_icon.png" style="float:left;"><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#bdc3c7;">京公网安备 838301830号</p></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(".pics_animate div").hover(function(){
+            $(this).find(".txt").stop().animate({height:"100%"},400);
+            $(this).find(".txt h3").stop().animate({paddingTop:'60px',opacity:'1'},400);
+        },function(){
+            $(this).find(".txt").stop().animate({height:"0"},400);
+            $(this).find(".txt h3").stop().animate({paddingTop:"0px",opacity:'0'},400);
+        })
+    </script>
+    <script>
+        var div1 = document.getElementById("banner_con");//整个区域
+        var a1 = div1.getElementsByTagName("a");//a标签 图片
+        var li1 = div1.getElementsByTagName("li");//右下角按钮
+        var ab = 0; //ab的值控制触摸按钮后的下一张图
+        //遍历所有图和按钮,页面加载完毕显示第一张图和第一个按钮
+        window.onload = function () {
+            for (var i=0;i<a1.length;i++){
+                if (i!=0){
+                    a1[i].style.opacity = 0;
+                }else {
+                    li1[i].style.backgroundColor = "#D0104c";
+                }
+            }
+        };
+        //运行函数bb();
+        function bb() {
+            for (var j=0;j<li1.length;j++) {
+                //遍历所有的按钮,所有按钮都给绑定一个鼠标移上去的onmouseover事件
+                li1[j].onmouseover = function () {
+                    //变量index就是当前触摸的按钮的文本-1,此前特意设置按钮文本为数字
+                    var index = this.innerHTML - 1;
+                    ab = index; //ab后面用return返回
+                    //声明变量b
+                    for (var b = 0; b < li1.length; b++) {
+                        //当b就是被触摸到的按钮的索引号时,设置第b张图片不透明度为100,渐变透明度效果1s,第b个按钮背景色变成green
+                        if (b == index) {
+                            a1[b].style.opacity = 100;
+                            a1[b].style.transition = "opacity 1s";
+                            li1[b].style.backgroundColor = "#D0104c";
+                        } else { //当b不是被触摸到的按钮的索引号时,就变透明,按钮颜色白色.
+                            a1[b].style.opacity = 0;
+                            li1[b].style.backgroundColor = "white";
+                        }
+                    }
+                    return ab; //返回ab,貌似运用到了闭包?不太了解.
+                }
+
+            }
+            setInterval(function ac() { //设置2000毫秒重复运行
+                ab = ab>li1.length-2?0:++ab; //5张图,当触摸到的按钮索引号大于3时(比如4),那么ab=0(下一张图为第0张),否则++ab;
+                //循环遍历下一张图的效果.
+                for (var b = 0; b < li1.length; b++) {
+                    if (b == ab) {
+                        a1[b].style.opacity = 100;
+                        a1[b].style.transition = "opacity 1s";
+                        li1[b].style.backgroundColor = "#D0104c";
+                    } else {
+                        a1[b].style.opacity = 0;
+                        li1[b].style.backgroundColor = "white";
+                    }
+                }
+            },3000);
+        }
+        bb(); //运行bb()
+    </script>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="js/cityData.js"></script>
+    <script type="text/javascript" src="js/cityPicker.js"></script>
+    <script>
+        var cityPicker = new IIInsomniaCityPicker({
+            data: cityData,
+            target: '#cityChoice',
+            valType: 'k-v',
+            hideCityInput: '#city',
+            hideProvinceInput: '#province',
+            callback: function(city_id){
+            }
+        });
+
+        cityPicker.init();
+    </script>
+    <script type="text/javascript" src="skrollr.min.js"></script>
+    <script type="text/javascript">
+        window.onload = function() {
+            skrollr.init({
+                forceHeight: false
+            });
+        }
+    </script>
+    <!-- vue全家桶引入 -->
+    <script src='js/vue.js'></script>
+    <script src='js/vuex.js'></script>
+    <script src='js/vue-resource.js'></script>
+    <script>
+        Vue.http.options.emulateJSON=false;
+        Vue.http.headers.post['Content-Type']='application/json';
+    </script>
+    <!-- vue组件相关js引入 -->
+    <script src='components/popwindow/popwindow.js'></script>
+    <script src='components/login/login.js'></script>
+    <script src='components/register/register.js'></script>
+<!-- 根实例 -->
+<script>
+Vue.http.options.emulateJSON=true;
+</script>
+    <script>
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                isShow:false,
+                
+            },
+            
+            methods:{
+                showWindow:function(){
+                    
+                    this.isShow=true;
+                },
+                 closeWindow:function(newValue){
+                        this.isShow=newValue;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

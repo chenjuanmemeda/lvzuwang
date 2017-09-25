@@ -1,0 +1,113 @@
+.wrap{
+    width: 100%;height: 353px;
+    background-color: #f5f5f5;
+    /*background-color: red;*/
+    margin-top: 3050px;
+    margin-left: 5px;
+}
+.wrapLike {
+	/*float: left;*/
+    font: normal 14px/24px "Microsoft YaHei";
+    color: #2c3e50;
+    width: 1240px;height: 353px;
+    margin: 0 auto;
+    background-color: #f5f5f5;
+    /*position: relative;*/
+    /*margin-top: 3000px;*/
+}
+.wrapLike .show_top {
+    padding: 35px 0 12px 0;
+    font-size: 18px;
+    height: 62px;
+    /*line-height: 32px;*/
+}
+.show_top h4 {
+    width: 72px;height: 32px;
+    font-weight: normal;
+    float: left;
+}
+.show_top_r {
+    float: right;
+    width: 62px;height: 25px;
+    margin-right: 10px;
+    /*margin-bottom: 0px;*/
+}
+.show_top_r .prev_btn, .prev_btn:hover, .next_btn, .next_btn:hover {
+    display: block;
+    background: url(../../Chen-images/sprice.png) no-repeat 0 -1348px;
+    width: 30px;
+    height: 20px;
+    margin-top: 5px;
+}
+.show_top_r .prev_btn {
+    width: 30px;height: 20px;
+    float: left;
+}
+.show_top_r .next_btn {
+     width: 30px;height: 20px;
+    float: right;
+    background-position: 0 -1392px;
+}
+.scroll_pic {
+    width: 1240px;
+    height: 274px;
+    overflow: hidden;
+    margin-left: -10px;
+}
+.scroll_pic ul {
+    width: 9999px;
+    height: 274px;
+}
+.scroll_pic li {
+    float: left;
+    width: 300px;
+    height: 274px;
+    margin-left: 10px;
+    line-height: 26px;
+}
+.scroll_pic li.active{
+    display: block;
+}
+a, a:hover {
+    color: #2c3e50;
+    text-decoration: none;
+}
+.piclike{
+    position: relative;
+}
+.piclike>img{
+    width: 300px;height: 200px;
+}
+.pictext{
+    position: absolute;top: 0;bottom: 0;
+}
+.result_price {
+    position: absolute;
+    width: 102px;height: 48px;
+    bottom: 0;
+    height: 48px;
+    line-height: 48px;
+    display: inline-block;
+    background-color: #000;
+    -moz-opacity: 0.7;
+    opacity: 0.7;
+    font-size: 18px;
+    color: #fff;
+    float: left;
+    text-align: center;
+    margin-left: 3px;
+}
+.clearfix>p{
+    color: #2c3e50;
+    margin-left: 0px;
+    line-height: 0px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.col_gray {
+    color: #959ea7;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

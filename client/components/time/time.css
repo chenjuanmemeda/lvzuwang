@@ -1,0 +1,37 @@
+ /* var msgTime = "<div class=\"end\">离抢购结束时间还剩：</div><span class=\"key\">"
+                  +hours.substr(0,2)+"</span>小时<span class=\"key\">"
+                  +minutes.substr(0,2)+"</span>分<span class=\"key\">"
+                  +seconds.substr(0,2)+"</span>秒";
+                  this.msgTime=msgTime;
+                  --this.limit_seconds;
+            }else{
+              var endTime="<div class=\"end\">抢购已结束</div>";
+              this.msgTime=endTime;
+              <div class="description" id="limit_time" v-html='msgTime'>
+*/
+.description{
+	/*background-color: pink;*/
+	display: inline-block;
+}
+.limit{
+	/*margin-left: 20px;*/
+	display: inline-block;
+}
+.unit{
+	/*margin-left: 20px;*/
+	font-family:Arial; /*Helvetica, sans-serif*/
+	font-weight: bold; color:#f05b72;
+	font-size:10px;
+	display: inline-block;
+}
+.key{
+	/*margin-left: 20px;*/
+	font-weight: bold; color:#e33555;
+	font-size:15px;
+	display: inline-block;
+}
+.end{
+	/*width: 200px;height: 20px;*/
+	font-weight: bold; color:#e33555;
+	font-size:15px;
+}

@@ -1,0 +1,61 @@
+/*myData.css*/
+.fkinfo{
+	width: 90%; height: 400px; margin-left:30px;
+}
+.fkinfo>.msg{
+	width: 80%; margin:10px 0 0 80px; 
+	border: 1px solid #ccc;
+	padding-bottom: 20px;
+	border-radius:20px; box-shadow: 1px 2px 2px 2px #f1f1f1;
+}
+.fkinfo>.msg>.bo{
+	width: 90%;
+	display: block;height: 50px;line-height: 50px;
+	font-size: 20px;   margin:0 auto; 
+	border-bottom:1px solid #ccc;
+}
+.fkinfo>.msg>.ulmsg{
+	width: 90%; margin:0 auto;position: relative;
+}
+.fkinfo>.msg>.ulmsg>li{
+	height: 50px;line-height: 50px;font-size: 18px;
+}
+.fkinfo>.msg>.ulmsg>li>label{ width: 100px; text-align: right; }
+.fkinfo>.msg>.ulmsg>li>.sex{
+	height: 20px; width: 50px;
+}
+.fkinfo>.msg>.ulmsg>li>input{
+	height: 30px; width: 200px;
+	margin-left: 10px;  font-size:18px;
+}
+.fkinfo>.msg>.ulmsg>li>span{
+	color:red; margin-left: 10px; cursor: pointer; color: #000;
+}
+.fkinfo>.msg>.ulmsg>.photo{
+	position: absolute; right: 0;top: 0;
+	background-color: #f1f1f1;
+	width:150px;height: 150px; margin-top: 10px;
+}
+.fkinfo>.msg>.ulmsg>.photo>p{
+	position: absolute;bottom: 0; 
+	background: rgba(0,0,0,.1);
+	width: 150px;height: 40px; font-size: 14px;
+	text-align: center;line-height: 40px;
+}
+.fkinfo>.msg>.ulmsg>li>select{
+	width: 200px; height: 35px; 
+	margin-left: 10px; font-size: 18px;
+}
+.fkinfo>.msg>.msgcom{
+	border-bottom: 1px solid #ccc;
+	padding: 10px 0 10px 20px;
+	font-size: 18px;
+}
+.fkinfo>.msg>.msgcom>span{display: block; padding-bottom: 10px;}
+.fkinfo>#btn{ width: 20%;margin:0 auto;margin-top: 10px; }
+.fkinfo>#btn>input{
+	width: 100px;height: 30px; line-height: 30px;
+	font-size: 18px;
+}
+
+

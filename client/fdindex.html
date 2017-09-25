@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>房东登陆后</title>
+	<link rel="stylesheet" href="css/findex.css">
+	<link rel="stylesheet" href="components/myData/myData.css">
+	<link rel="stylesheet" href="components/myRoom/myRoom.css">
+	<link rel="stylesheet" href="components/myRec/myRec.css">
+</head>
+<body>
+	<div class="fmain">
+		<div class="fheader">
+			<fright></fright>
+		</div>
+		<div class="fbanner"></div> 
+		<div class="fcontent">
+			<fcolumn></fcolumn>
+			<div id="fRcon">
+				<my-data v-show="$store.state.col.currentView=='myData'"></my-data>
+				<my-room v-show="$store.state.col.currentView=='myRoom'"></my-room>
+				<my-rec  v-show="$store.state.col.currentView=='myRec'"></my-rec>
+			</div>
+		</div>
+		<div class="fFooter">
+			<div class="ftcon">
+				<ul class="derec">
+					<li>
+						<img src="images/xlx.png" alt="">
+						<p>房东指南</p>
+					</li>
+					<li>
+						<img src="images/per.png" alt="">
+						<p>房客指南</p>
+					</li>
+				</ul>
+				<div class="about">
+					<div class="one">
+						<p>关于我们</p>
+						<p>联系我们</p>
+					</div>
+					<ul class="two">
+						<p>网站购物</p>
+						<li>帮助中心</li>
+						<li>网站地图</li>
+					</ul>
+					<ul class="three">
+						<p>网站协议</p>
+						<li>服务协议</li>
+						<li>房东规则</li>
+						<li>房源上线标准</li>
+						<li>隐私保护</li>
+						<li>版权声明</li>
+						<li>免费声明</li>
+						<li>知识产权声明</li>
+					</ul>
+					<ul class="four">
+						<li>
+							<p>客服电话</p>
+							<p>400-101-7890</p>
+						</li>
+						<li>
+							<p>客服邮箱</p>
+							<p>service@duanzhu.com</p>
+						</li>
+					</ul>
+					</div>
+			</div>
+			<ul class="bottom">
+				<li>非法内容举报<strong>|</strong></li>
+				<li>关于本站<strong>|</strong></li>
+				<li>商务合作<strong>|</strong></li>
+				<li>Copyright&copy;2017-08-18 谁还不是小公举了--icon.</li>
+			</ul>
+		</div>
+
+	</div>
+	<template id="fright">
+		<div class="fright">
+			<ul>
+				<li class="fname" v-for="(item,i) in dlicons">
+					<span v-text='item.name' @click="toggle(i)"></span>
+					<ul v-show='item.isShow'>
+						<li v-for='sub in item.subMenus' v-text='sub.name'></li>
+					</ul>
+				</li>
+				<li><span><a href="index.html" >首页</a></span></li>
+			</ul>
+			</div>
+	</template>
+	<!-- 左侧菜单 -->
+	<template id="fcolumn">
+		<div class="fColumn">
+			<br>
+			<ul>
+			   <li v-for="(item,i) in dcolumn">
+		 	      <img :src="item.imgUrl" alt="">
+		   		  <span v-text="item.name" @click='$store.commit("col/toggleTabs",item.view)'></span>
+		       </li>
+			</ul>
+		</div>
+	</template> 
+	<!-- 我的资料 -->
+	<template id='myData'>
+			<div class="fkinfo">
+                <div class="msg" v-for="(item,index) in datas">
+	                <span class="bo" v-text="item.name"></span>
+	                <ul class="ulmsg">
+		                <li v-for='sub in item.subMenus'>
+		                    <label  v-text="sub.name+':'" ></label>
+		                    <select v-if="sub.type=='select'" :id="sub.name">
+		                     	<option v-for="opt in sub.options" :value="opt.value" v-text="opt.name">
+		                    </select>
+		                    <input v-else type="text" v-modle="">
+	                    </li>
+	                </ul>
+                </div>
+				<div class="msg">
+					<span class="bo">授权信息</span>
+					<div class="ulmsg msgcom">
+						<span>芝麻信用授权</span>
+						<img src="" alt="">
+						<p>芝麻信用是依法成立的独立信用评估及管理机构。授权后得到分数越高，代表信用越好。</p>
+						 <span>(什么是芝麻信用？)</span>  
+						<a href="">立即授权></a>
+					</div>
+					<div class="ulmsg msgcom">
+						<span>社交绑定信息</span>
+						<img src="./images/icon.png" alt="">
+					</div>
+				</div>
+			</div>
+	</template>
+	<!-- 我的房子 -->
+	<template id='myRoom'>
+			<div class="published">
+				<div class="titleRoom">我的房源 </div>
+				<div class="roomPub" v-for="(index, item) in houses">
+					  <table>
+					  	<caption v-text="index.name"></caption>
+					    <tbody>
+					      <tr v-for="(num, data) in index.list">
+					        <td>
+					          <input type="checkbox" name="all" v-model="data.checked" @click="choose(index, num)" />
+					        </td>
+					        <td>
+					          <span v-text="num.name"></span>
+					        </td>
+					        </td>
+					        <td class="roomdel">
+					          <a href="javascript:;"  @click="delhouses(index,num)">删除</a>
+					        </td>
+					      </tr>
+					      <tr>
+							<td><input type="checkbox" name="all" @click="chooseHouses(index)" v-model="item.checked" /></td>
+							<td><span>全选</span></td>
+							<td><span class="delAll"><a href="javascript:;"  @click="delhouses(index,num)" >删除全部</a></span></td>
+					      </tr>
+					    </tbody>
+ 					   </table>
+				</div>
+				</div>
+			</div>
+	</template>
+	<!-- 消息记录 -->
+	<template id='myRec'>
+	 <div>
+		<div class="msgRec">
+			<div class="sleep">
+				<div class="perphoto">
+					<div></div>
+					<span>盛夏的夜晚</span>
+				</div>
+				<div class="perderact">
+					<h4>入住时间:<i>2017.08.01</i></h4>
+					<p>很干净，很整洁，有家的感觉</p>
+					<ul>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+					</ul>
+				</div>
+				<div class="anser">
+					<div></div>
+					<p>我的回复:{{msg}}</p>
+					<textarea name="" id="" cols="70" rows="4" v-model="msg"></textarea>
+				</div>
+			</div>
+		</div>
+		<div class="msgRec">
+			<div class="sleep">
+				<div class="perphoto">
+					<div></div>
+					<span>你该睡觉了</span>
+				</div>
+				<div class="perderact">
+					<h4>入住时间:<i>2017.08.01</i></h4>
+					<p>很干净，很整洁，有家的感觉。很干净，很整洁，有家的感觉</p>
+					<ul>
+						<li><img src="" alt=""></li>
+						<li><img src="" alt=""></li>
+					</ul>
+				</div>
+				<div class="anser">
+					<div></div>
+					<p>我的回复:感谢亲的认真评论啦！</p>
+					<!-- <textarea name="" id="" cols="70" rows="4" ></textarea> -->
+				</div>
+			</div>
+		</div>
+	</div>
+	</template> 
+
+
+	<script src='js/vue.js'></script>
+	<script src='js/vuex.js'></script>
+	<script src='js/vue-resource.js'></script>
+	<script>
+		Vue.http.options.emulateJSON=false;
+		Vue.http.headers.post['Content-Type']='application/json';
+	</script>
+	
+
+	<script src="components/dstore/col-store.js"></script>
+	<script src="components/dstore/store.js"></script>
+	
+	<script src="components/fright/fright.js"></script>
+	<script src="components/column/column.js"></script>
+	<script src="components/myData/myData.js"></script>
+	<script src="components/myRoom/myRoom.js"></script>
+	<script src="components/myRec/myRec.js"></script>
+
+	<script>
+		var vm=new Vue({
+			el:'.fmain',
+			store:store
+			
+		});
+	</script>
+</body>
+</html>

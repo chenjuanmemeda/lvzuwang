@@ -1,0 +1,140 @@
+.login_header{
+	 width: 100%;
+	height: 150px;line-height: 140px;	
+}
+.login_header>.log_title{
+	margin-left: 50px;
+	font-size: 34px;
+	
+	color: #0C0B0C;
+
+	
+}
+.login_header>.reg_link{
+	margin-left: -5%;
+	font-size: 20px;
+	color: #AFAAAA;
+	
+
+}
+.login_header>.reg_link>a{
+	text-decoration: none;
+	color: #D0104C;
+}
+.login_header>p{
+	float: right;
+	margin-right: 20px;
+	 margin-top: 6px;
+	width: 30px;height: 30px;
+	line-height: 30px;
+	/* text-align: center; */
+	/* border-radius: 15px; */
+	/* border:2px solid #fff; */
+	cursor: pointer; 
+	/* color: #000; */
+	font-size: 20px;
+	
+}
+.login_header>p>img{transition: all 0.4s ease-out;}
+.login_header>p>img:hover{transform:rotateZ(180deg);}
+.login_header>span{
+	margin-left:22%;
+	margin-right: 15%;
+	line-height: 50px;
+	
+}
+
+.login_body{
+	position: relative;
+	width:100%; height: 50%;
+}
+.login_body>p{
+	font-size: 14px;
+	color: red;
+	margin-left: 60px;
+}
+
+.login_body>#username,#password{
+	margin-left:60px;
+	margin-top:5px;
+	margin-bottom: 20px;
+	width: 280px;
+	height: 40px;
+	
+}
+
+.login_body>img{
+	width: 30px;
+	height: 30px;
+	margin-left:20px;
+	margin-top: 10px;
+}
+.img_user,.img_lock{
+	position: absolute;
+	left:30;
+	top: 40;
+	margin-top: 5px;
+}
+
+
+.login_body>.btn{
+	width: 120px;
+	height: 40px;
+	margin-left: 60px;
+	background-color: #f05b71;
+	cursor: pointer;
+	display:inline-block;
+}
+.login_body>div>span{
+	margin-left:40px;
+	line-height: 40px;
+	font-size: 20px;
+	color: white;
+	
+	
+}
+.login_body>a{
+	text-decoration: none;
+	color: #9F9B9B;
+	margin-left: 80px;
+	font-size: 14px;
+
+}
+.login_body>hr{
+	width: 90%;
+	color: grey;
+	margin-top: 40px;
+	margin-left: 5%;
+}
+.login_footer{
+	width: 100%;
+	padding-left: 60px;
+}
+.login_footer>p{
+	font-size: 14px;
+	color: #9F9B9B;
+}
+.login_footer>div{
+	width: 50px;
+	height: 50px;
+	display: inline-block;
+	margin-top: 25px;
+	margin-left: 15px;
+	border-radius: 50%;
+}
+.login_footer>div>a{
+	margin-left: -5px;
+}
+.sina{
+	background-color: #D63920;
+}
+
+.qq{
+	background-color:#3eb0d8;
+}
+.douban{
+	background-color: #19CB49;
+}
+.renren{
+	background-color: #241CDF;
+}

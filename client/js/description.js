@@ -1,0 +1,72 @@
+var description=Vue.extend({
+	template:'#description',
+	data:function(){
+		return{
+			items:[],
+			desItem:{
+				des_title:'',
+				des_desc:'',
+				des_in:'',
+				des_trans:'',
+				des_around:''
+			}
+		};
+	},
+	created:function(){
+		this.items=[
+			{
+				name:'房源标题',
+				write:'精炼的介绍特点和优势，让房客在第一时间对您的房源感兴趣',
+				class:'title'
+			},
+			{
+				name:'个性描述',
+				type:'textarea',
+				write:'可以向房客介绍一下自己的兴趣爱好，也可以告诉房客能体验到不一样的特色或服务有哪些(500字以内)',
+				class:'desc'
+			},
+			{
+				name:'内部情况',
+				type:'textarea',
+				write:'房屋内装修和装饰的风格，以及主要配套设施的介绍(500字以内)',
+				class:'in'
+			},
+			{
+				name:'交通情况',
+				type:'textarea',
+				write:'房源所处位置，以及周边交通或其他情况的描述，可选填...',
+				class:'trans'
+			},
+			{
+				name:'周边情况',
+				type:'textarea',
+				write:'房源周边是否有购物中心，小吃特色美食等情况的描述，可选填...',
+				class:'around'
+			}
+		];
+	},
+	methods:{
+		deepCopy:function(obj1,obj2){
+			for(var p in obj1){
+				if(Array.isArray(obj1[p]))
+					obj2[p]=obj1[p].slice(0);
+				else if(obj1[p]!=null&&(typeof obj1[p]=='object')){
+					obj2[p]={};
+					arguments.callee(obj1[p],obj2[p]);
+				}else
+					obj2[p]=obj1[p];
+			}
+		},
+		saveComplete:function(){
+			if(!confirm('确认保存并进行下一步?')) return;
+			this.$emit('save-complete');
+			// this.$store.state.tab.curIndex=this.index+1;
+			this.$http({
+				url:this.$store.state.tab.url+'information/add/',
+				method:"POST",
+				data:JSON.stringify(this.desItem)
+			}).then(function(res){});
+		}
+	}
+});
+Vue.component('descriptions',description);

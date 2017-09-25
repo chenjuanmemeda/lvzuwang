@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>房客登陆后</title>
+	<link rel="stylesheet" href="css/findex.css">
+	<link rel="stylesheet" href="components/myData/myData.css">
+	<link rel="stylesheet" href="components/myOrder/myOrder.css">
+</head>
+<body>
+	<div class="fmain">
+		<div class="fheader">
+			<fright></fright>
+		</div>
+		<div class="fbanner"></div>
+		<div class="fcontent">
+ 
+			<fcolumn></fcolumn>
+			<!-- <input type="text" v-model="msg"/><br/> -->
+       
+			<div id="fRcon" >
+				<my-data  v-show="$store.state.col.currentView=='myData'"></my-data>
+				<my-order v-show="$store.state.col.currentView=='myOrder'"></my-order>
+				<my-col   v-show="$store.state.col.currentView=='myCol'"></my-col>
+			</div>
+		</div> 
+		<div class="fFooter">
+			<div class="ftcon">
+				<ul class="derec">
+					<li>
+						<img src="images/xlx.png" alt="">
+						<p>房东指南</p>
+					</li>
+					<li>
+						<img src="images/per.png" alt="">
+						<p>房客指南</p>
+					</li>
+				</ul>
+				<div class="about">
+					<div class="one">
+						<p>关于我们</p>
+						<p>联系我们</p>
+					</div>
+					<ul class="two">
+						<p>网站购物</p>
+						<li>帮助中心</li>
+						<li>网站地图</li>
+					</ul>
+					<ul class="three">
+						<p>网站协议</p>
+						<li>服务协议</li>
+						<li>房东规则</li>
+						<li>房源上线标准</li>
+						<li>隐私保护</li>
+						<li>版权声明</li>
+						<li>免费声明</li>
+						<li>知识产权声明</li>
+					</ul>
+					<ul class="four">
+						<li>
+							<p>客服电话</p>
+							<p>400-101-7890</p>
+						</li>
+						<li>
+							<p>客服邮箱</p>
+							<p>service@duanzhu.com</p>
+						</li>
+					</ul>
+					</div>
+			</div>
+			<ul class="bottom">
+				<li>非法内容举报<strong>|</strong></li>
+				<li>关于本站<strong>|</strong></li>
+				<li>商务合作<strong>|</strong></li>
+				<li>Copyright&copy;2017-08-18 谁还不是小公举了--icon.</li>
+			</ul>
+		</div>
+
+	</div>
+	<template id="fright">
+		<div class="fright">
+			<ul>
+				<li class="fname" v-for="(item,i) in klicons">
+					<span v-text='item.name' @click="toggle(i)"></span>
+					<ul v-show='item.isShow'>
+						<li v-for='sub in item.subMenus' v-text='sub.name'></li>
+					</ul>
+				</li>
+				<li><span><a href="index.html" >首页</a></span></li>
+			</ul>
+		</div>
+	</template>
+	<template id="fcolumn">
+		<div class="fColumn">
+			<br>
+			<ul>
+			   <li v-for="(item,index) in kcolumn" >
+		 	      <img :src="item.imgUrl" alt="">
+		   		  <span v-text="item.name" @click='$store.commit("col/toggleTabs",item.view)'></span>
+		       </li>
+			</ul>
+		</div> 
+	</template>
+	<!-- 我的资料组件 -->
+	<template id='myData'>
+			<div class="fkinfo">
+                <div class="msg" v-for="(item,index) in datas">
+	                <span class="bo" v-text="item.name"></span>
+	                <ul class="ulmsg">
+		                <li v-for='sub in item.subMenus'>
+		                    <label  v-text="sub.name+':'" ></label>
+		                    <select v-if="sub.type=='select'" :id="sub.name">
+		                     	<option v-for="opt in sub.options" :value="opt.value" v-text="opt.name">
+		                    </select>
+		                    <input v-else type="text">
+	                    </li>
+	                </ul>
+                </div>
+                <div id="btn"><input type="button" value="确定修改"></div>
+				<div class="msg">
+					<span class="bo">授权信息</span>
+					<div class="ulmsg msgcom">
+						<span>芝麻信用授权</span>
+						<p>芝麻信用是依法成立的独立信用评估及管理机构。授权后得到分数越高，代表信用越好。</p>
+						 <span>(什么是芝麻信用？)</span>  
+						<a href="">立即授权></a>
+					</div>
+					<div class="ulmsg msgcom">
+						<span>社交绑定信息</span>
+						<img src="./images/icon.png" alt="">
+					</div>
+				</div>
+
+			</div>
+	</template>
+	<!-- 我的订单组件 -->
+	<template id='myOrder'>
+			<div class="published">
+				<div class="titleRoom">我的订单</div>
+				<div class="roomPub">
+					<div class="roomImg"></div>
+					<ul class="roomIfom">
+						<li>虹桥火车站/会展中心/九号线地铁九亭站租单间</li>
+						<li>地址:上海市松江区</li>
+						<li>独立卫生间/1张床/宜住2人</li>
+						<li>房东:开心每一天</li>
+						<li>价格: ￥564/晚</li>
+					</ul>
+					<div class="option">
+						<p id="cansl" @click="">取消</p>
+						<p id="pay">付款</p>
+					</div>
+				</div>
+				<div class="roomPub" v-for="(item,index) in orders">
+					<div class="roomImg"></div>
+					<ul class="roomIfom">
+					   <li v-for="val in item.basement" v-if="val.type!='price'">
+					   <span v-text="val.name+':'"></span>
+					   <span v-text="val.ordcont"></span>
+					   </li>
+					   <li v-else :class="val.type">
+					   <span v-text="val.name+':'"></span>
+					   <span v-text="val.price"></span>
+					   </li>
+					</ul>
+					<div class="option">
+						<p id="cansl">取消</p>
+						<p id="pay">付款</p>
+					</div>
+				</div>
+			</div>
+	</template>
+	<!-- 我的收藏 -->
+	<template id='myCol'>
+		
+	</template> 
+
+
+	<script src='js/vue.js'></script>
+	<script src='js/vuex.js'></script>
+	<script src='js/vue-resource.js'></script>
+	<script>
+		Vue.http.options.emulateJSON=false;
+		Vue.http.headers.post['Content-Type']='application/json';
+	</script>
+	
+	<script src="components/kstore/url-store.js"></script>
+	<script src="components/kstore/myOrder-store.js"></script>
+	<script src="components/kstore/col-store.js"></script>
+	<script src="components/kstore/store.js"></script>
+
+	<script src="components/fright/fright.js"></script>
+	<script src="components/column/column.js"></script>
+	<script src="components/myData/myData.js"></script>
+	<script src="components/myOrder/myOrder.js"></script>
+	<script src="components/myCol/myCol.js"></script>
+
+
+	<script>
+		var vm=new Vue({
+			el:'.fmain',
+			store:store,
+			data:{
+                // msg:'Hello Vue!'
+            }
+			
+		});
+	</script>
+</body>
+</html>

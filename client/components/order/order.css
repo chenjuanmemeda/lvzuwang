@@ -1,0 +1,49 @@
+.order{}
+.reserve{
+	width: 280px;height: 44px;
+	line-height: 44px;
+	margin-left: 15px;
+	font-size: 18px;
+	display: inline-block;
+	background-color: #f05b72;
+	text-align: center;
+}
+.reserve>a{
+	text-decoration: none;
+	color: #fff;
+}
+.reserve:hover{
+	background-color: #e33555
+}
+.space1{
+	width: 310px;height: 2px;
+	background-color: #f5f5f5;
+	margin-top:6px;
+}
+.reserve>span{
+	display: inline-block;
+}
+.datebg{}
+.datebg .cal_box{
+	width: 310px;height: 56px;
+	border-top: 1px solid #ecf0f1;
+    margin-top: 10px;
+    font-family: "Verdana";
+    margin-bottom: 0px;
+}
+.datebg .cal_box>li{
+	float: left;
+    position: relative;
+    width: 51px;
+    height: 34px;
+    line-height: 17px;
+    text-align: center;
+    font-size: 12px;
+    border-right: 2px solid #ecf0f1;
+    margin: 10px 0 12px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+.datebg .cal_box>li.endRent{
+	color: #959ea7;
+}

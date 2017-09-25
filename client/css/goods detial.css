@@ -1,0 +1,151 @@
+*{padding:0;margin:0}
+html,body{width:100;height:100%;}
+body{position:relative;}
+#app{
+	box-sizing:border-box;
+	min-height:100%;
+	/*border:1px solid black;*/
+	width:100%;
+	margin:0 auto;
+	position:relative;
+	padding-bottom:40px;
+	/*position:absolute;
+	left:50%;top:50%;
+	-webkit-transform:translate(-50%,-50%);*/
+}
+.header{
+	height:56px;
+	width: 100%;
+	background-color:#fff;
+}
+.detail_head {
+    width: 1500px;height: 56px;
+    margin: 0 300px;
+    position: relative;
+}
+.logo{
+	position: absolute;
+	width: 55px;height: 24px;
+	/*background-position: scale;*/
+	background: url(../Chen-images/logo.png) no-repeat ;
+	margin-top: 20px;
+	display:block
+}
+.adv{
+    /*background-position: 0 -440px;*/
+    display: inline-block;
+    position: absolute;
+    top: 24px;left: 80px;
+    color: #333;;
+    /*margin: 17px 0 0 20px;*/
+}
+.nav_commen {
+    color: #2c3e50;
+    /*padding-top: 8px;*/		
+}
+.nav_commen a:hover{
+	color: #f05b72;
+    text-decoration: none;
+}
+.nav_R {
+	width: 433px;height: 48px;
+    font-family: "microsoft yahei";
+    font-size: 14px;
+    position:absolute;
+    top:15px;right: 24px;
+}
+.nav_commen li {
+    height: 40px;
+    line-height: 40px;
+}
+
+.nav_commen li, .nav_commen li a {
+    color: #2c3e50;
+}
+.nav_R li {
+    float: left;
+    color:#2c3e50;;
+    height: 44px;
+    line-height: 44px;
+    position: relative;
+    z-index: 999;
+    margin-left: 20px;
+    text-align: right;
+}
+	/*.nav_R li:nth-chid(2){
+		 color: #2c3e50;
+	}*/
+.nav_commen li a.icon_iphone {
+    background-position: 0 -390px;
+}
+.nav_R li a.icon_iphone {
+    background-position: 0 -119px;
+    padding-left: 24px;
+    margin-left: 10px;
+    padding-right: 20px;
+    background: url(http://jci.xiaozhustatic1.com/e17082301/images/icon_head.png) no-repeat;
+
+}
+
+.nav_commen .btn_free {
+    width: 110px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    color: #fff;
+   
+}
+.btn_free{
+	width: 130px;height: 40px;
+	 background-color: #1abc9c;
+}
+.nav_commen .btn_free:hover{
+	color: #fff;text-decoration: none;
+}
+.footer{
+	height:232px;/*line-height:30px;border-top:10px solid white;*/
+	background-color:#f5f5f5;position:absolute;left:0;bottom:0;
+	color:white;text-align:center;
+	width: 100%;
+	/*position: fixed;*/
+}
+.footerbg{
+	width:1212px;height: 232px;bottom: 0;
+	margin: auto;
+	background: url(../Chen-images/footer.PNG);
+}
+/*.footer>img{width: 100px;height: 100%;}*/
+.content{
+	width: 100%;height:3600px;
+	overflow:hidden;
+	/*overflow: visible;*/
+	background-color: #f5f5f5;
+	/*position:relative;*/
+	/*position: fixed;*/
+	/*width: 1010px;height: 499px;*/
+}
+.left,.right{float:left;box-sizing:border-box;}
+.left{
+	width:920px;min-height:3000px;
+	margin-left: 360px;
+	/*position:absolute;left:20%;top:50%;*/
+	/*background:-webkit-gradient(linear,left top,left bottom,from(#0094ff),to(#fff));*/
+}
+.right{
+	/*margin-left:10px;*/
+	width:310px;
+	margin-left: 20px;
+	/*height: 499px;*/
+	/*float: right;*/
+	/*clear: right;*/
+	/*position: absolute;*/
+	/*top: 50%;*/
+	/*right: 15%;*/
+	/*margin-right: 376px;*/
+	/*position: fixed;*/
+}
+.rightbg{
+	width: 310px;
+	/*margin-right:376px;*/
+	background-color: #fff;
+}

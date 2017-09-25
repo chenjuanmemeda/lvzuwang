@@ -1,0 +1,14 @@
+.hinfo{list-style: none;width: 100%;margin: 0 auto;}
+li{width: 80%;margin: 0 auto;margin-bottom: 30px;color: white}
+input{height: 30px;width: 200px;border-color:#aca9aa;border-width:0.5px }
+#r_scale{width: 50px;}
+#r_area{width: 80px;}
+#r_beds{width: 80px;}
+#r_hire{width: 12px;height: 15px;margin-right:5px; }
+#r_wc{width: 12px;height: 15px;margin-right:5px;}
+#r_yorn{width: 12px;height: 15px;margin-right:5px;}
+#r_change{width: 12px;height: 15px;margin-right:5px;}
+span{margin-right: 10px;color:#343333 }
+label{
+    color: #343333;
+}

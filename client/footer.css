@@ -1,0 +1,24 @@
+#footer{height: 320px;margin-top: 10px;}
+.foot{background: url('images/bg.png');height: 320px;position: relative;}
+.foot_T{font-size: 14px;font-family:"microsoft yahei";color: #f05b72;position: absolute;right: 40%;padding-top: 10px;text-align: center;}
+.see_ul{width: 120px;margin:5px auto 5px;overflow: hidden;padding-top: 60px;list-style: none;}
+.see_ul li{float: left;margin: 0 8px;width: 40px;}
+.icon_wx,.icon_wb{background: url(images/icon_head.png);background-position: 0 -208px;display: inline-block;width: 35px;height: 35px;}
+.icon_wb{background-position: -45px -208px;}
+.icon_wx:hover{background: url(images/icon_head.png);background-position: -90px -208px;}
+.icon_wb:hover{background: url(images/icon_head.png);background-position: -135px -208px;}
+.foot_ul{overflow: hidden;text-align: left;margin-bottom: 20px;list-style: none;width: 90%;margin:0 auto;}
+.foot_ul li{float: left;width: 60px; margin: 0 32px 0 0;color: #959ea7;line-height: 24px;}
+.foot_ul li a{color: #959ea7;white-space:nowrap;text-decoration: none;font-size: 12px;width: 55px;}
+.guide{background: url(images/icon_head.png);background-position: 8px -258px;padding-top: 50px;display: inline-block;color: #959ea7;font-size: 14px;font-family:"microsoft yahei";}
+.icon_fk{background: url(images/icon_head.png);background-position: -44px -258px;}
+.guide_T{font-size: 14px;font-family:"microsoft yahei";width: 48px;margin-right: 0;}
+.width_280{width: 282px!important;}
+.width_280 a{margin-right: 7px;}
+.width_100{width: 100px!important;}
+.link_dl{color: #bdc3c7;text-align: left;}
+.link_dl dt{float: left;width: 75px;font-size: 14px;font-family:"microsoft yahei";}
+.link_dl dd{float: left;width: 1000px;line-height: 24px;}
+.link_dl dd a{color: #bdc3c7;margin-right:8px; white-space: nowrap;text-decoration: none;font-size: 12px;}
+
+

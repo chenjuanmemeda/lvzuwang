@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>register</title>
+	<link rel="stylesheet" href="components/register/register.css">
+	
+</head>
+<body>
+	<div id="app">
+	<register></register>
+	</div>
+	<!--return validate()和validate()在于是否清空表单--> 
+	<template id="register">
+		<div>
+			<form id="test" align="left" @submit.prevent="" method="post"> 
+					<table> 
+						<tr> 
+							<td><label for="username">用户名:</label></td> 
+							<td><input type="text" name='username' id="username" size="20" @Change='check("username")' v-model="username"></td> 
+							<td id="usernameCheck" class="check" hidden="true">*姓名不能为空</td> 
+						</tr> 
+				
+						<tr> 
+							<td><label for="password">密码:</label></td> 
+							<td><input type="password" name='password' id="password" size="20" @Change='check("password")' v-model="password"></td> 
+							<td id="passwordCheck" class="check" hidden="true">*密码少于8位数</td> 
+						</tr> 
+						<tr> 
+							<td><label for="cpassword">确认密码:</label></td> 
+							<td><input type="password" name="cpassword" id="cpassword" size="20" @Change='check("cpassword")'></td> 
+							<td id="cpasswordCheck" class="check" hidden="true">*密码不一致</td> 
+						</tr>
+						<tr>
+							<td>类别:</td>
+							<td>
+								<select name="character" id="character" v-model="character">
+									<option value="tenant">房客</option>
+									<option value="lordland">房东</option>
+								</select>
+								
+							</td>
+							
+						</tr> 	
+						<tr> 
+							<td>邮箱:</td> 
+							<td><input type="email" name="email" id="email" size="20" @Change='check(this.id)' v-model="email"></td> 
+							<td id="emailCheck" class="check" hidden="true">*电子邮件名非法！</td> 
+						</tr> 
+						
+						<tr> 
+							<td colspan="3"> 
+							<input class="reg_btn" type="submit" name="submit" @click="regSubmit" onclick="return false"> 
+							<input class="reg_btn" type="reset" name="reset"> 
+							</td> 
+						</tr> 
+					
+						<tr>
+							<td>用户注册即代表同意《服务条款》和《用户隐私保护》</td>
+						</tr>
+						
+					</table> 
+					<p>已有账号？<a href="index.html"><i>返回</i></a></p>
+			</form> 
+		</div>
+	</template>
+	<script src='js/jquery.min.js'></script>
+	<!-- vue全家桶引入 -->
+	<script src='js/vue.js'></script>
+	<script src='js/vuex.js'></script>
+	<script src='js/vue-resource.js'></script>
+	<script>
+		Vue.http.options.emulateJSON=false;
+		Vue.http.headers.post['Content-Type']='application/json';
+	</script>
+	<script src='components/register/register.js'></script>
+	<script>
+		var vm=new Vue({
+			el:'#app'	
+			
+		});
+	</script>
+</body>
+</html>

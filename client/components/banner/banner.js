@@ -1,0 +1,27 @@
+var banner=Vue.extend({
+	template:"#ChenBanner",
+	data:function(){
+		return{
+			ChenImgUrlOne:["Chen-images/1-1.PNG","Chen-images/2-1.PNG","Chen-images/3-1.PNG","Chen-images/4-1.PNG","Chen-images/5-1.PNG","Chen-images/6-1.PNG"],
+			ChenImgUrl:[
+					"Chen-images/1.PNG","Chen-images/2.PNG","Chen-images/3.PNG","Chen-images/4.PNG","Chen-images/5.PNG","Chen-images/6.PNG"
+					],
+			curIndex:1,
+		};
+	},
+	methods:{
+		nextChange:function(){
+			if(this.curIndex==this.ChenImgUrl.length)
+				this.curIndex=1;
+			else
+				this.curIndex++;
+		},
+		preChange:function(){
+			if(this.curIndex==1)
+				this.curIndex=this.ChenImgUrl.length;
+			else
+				this.curIndex--;
+		},
+	},
+});
+Vue.component('banner',banner);

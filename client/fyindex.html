@@ -1,0 +1,373 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<title>Vue-resource</title>
+<link rel="stylesheet" type="text/css" href="style/list.css"/>
+<link rel="stylesheet" type="text/css" href="style/info.css"/>
+<link rel="stylesheet" type="text/css" href="style/manhuaDate.1.0.css"/>
+  <link rel="stylesheet" href="footer.css">
+<script type="text/javascript" src="js/jquery-1.5.1.js"></script><!--日期控件，JS库版本不能过高否则tab会失效-->
+<script type="text/javascript" src="js/datejs.js"></script>
+<script type="text/javascript" src="js/ui.tab.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var tab = new $.fn.tab({
+		tabList:"#demo1 .ui-tab-container .ui-tab-list li",
+		contentList:"#demo1 .ui-tab-container .ui-tab-content"
+	});
+	var tab = new $.fn.tab({
+		tabList:"#demo1 .ui-tab-container .ui-tab-list2 li",
+		contentList:"#demo1 .ui-tab-container .ui-tab-content2"
+	});		
+});	
+</script>
+<script type="text/javascript">
+$(function (){
+	$("input.mh_date").datejs({					       
+		Event : "click",//可选				       
+		Left : 0,//弹出时间停靠的左边位置
+		Top : -16,//弹出时间停靠的顶部边位置
+		fuhao : "-",//日期连接符默认为-
+		isTime : false,//是否开启时间值默认为false
+		beginY : 2010,//年份的开始默认为1949
+		endY :2017//年份的结束默认为2049
+	});
+	
+});
+</script>
+<script type="text/javascript">
+               		$(document).ready(function(e) {
+                        $("#selectList").find(".more").toggle(function(){
+							$(this).addClass("more_bg");
+							$(".more-none").show()
+                    },function(){
+						$(this).removeClass("more_bg");
+						$(".more-none").hide()
+						});
+					});
+               </script>
+<script type="text/javascript">
+    	$(document).ready(function(){
+			var taboy_box=$(".lefttable-list");
+			taboy_box.children("tbody").find("tr:gt(2)").hide(); 
+			$(".leftbox-morea").toggle(function(){
+				$(this).parent().prev().find("tr").show();
+				$(this).addClass("more-i")
+			},function(){
+				$(this).removeClass("more-i");
+				$(this).parent().prev().children("tbody").find("tr:gt(2)").hide(); 
+			}
+			);
+		});
+    </script>
+</head>
+
+<body>
+<br>
+<div id="app">
+    <div class="w1200">
+      <div class="list-screen">
+        <div class="screen-top" style="position:relative;">
+          <div class="place">
+            目的地：
+            <input type="text" value="" size="15" id="homecity_name" name="homecity_name" mod="address|notice" mod_address_source="hotel" mod_address_suggest="@Beijing|北京|53@Shanghai|上海|321@Shenzhen|深圳|91@Guangzhou|广州|80@Qingdao|青岛|292@Chengdu|成都|324@Hangzhou|杭州|383@Wuhan|武汉|192@Tianjin|天津|343@Dalian|大连|248@Xiamen|厦门|61@Chongqing|重庆|394@" mod_address_reference="cityid" mod_notice_tip="中文/拼音" />
+            <input id="cityid" name="cityid" type="hidden" value="{$cityid}" /></div>
+            <span>入住<input type="text" class="mh_date" readonly="true" /></span>
+            <span>退房<input type="text" class="mh_date" readonly="true" /></span>
+            <span>最多宜居<select name="biggest" id="large">
+                <option value="">1人</option>
+                <option value="">2人</option>
+                <option value="">3人</option>
+                <option value="">4人</option>
+                <option value="">4人以上</option>
+            </select></span>
+            <!-- <span>酒店名称<input type="text" class="ju-name" /></span> -->
+            <a href="#" id="submit-btn"/>搜索</a>
+        </div>
+        <div style="padding:10px 30px 10px 10px;"><div class="screen-address">
+          <div class="list-tab">
+            <div id="demo1" class="clearfix">
+              <div class="jiud-name">房间位置</div>
+              <div class="ui-tab-container">
+                <ul class="clearfix ui-tab-list">
+                  <li class="ui-tab-active">景点</li>
+                  <li>热门地标</li>
+                  <li>地铁周边</li>
+                  <li>行政区</li>
+                </ul>
+                <div class="ui-tab-bd">
+                  <div class="ui-tab-content clearfix">
+                    <p>
+                      <label>
+                        <input name="tabrad1" type="radio" value="" />
+                        宽窄巷子</label></p>
+                    <p>
+                      <label>
+                        <input name="tabrad1" type="radio" value="" />
+                        春熙路</label>
+                    </p>
+                    <p>
+                      <label>
+                        <input name="tabrad1" type="radio" value="" />
+                       锦里古街</label>
+                    </p>
+                    <p>
+                      <label>
+                        <input name="tabrad1" type="radio" value="" />
+                       洛带古镇</label>
+                    </p>
+                    <p>
+                      <label>
+                        <input name="tabrad1" type="radio" value="" />
+                       东郊记忆</label>
+                    </p>
+                    <p>
+                      <label>
+                        <input name="tabrad1" type="radio" value="" />
+                       成都青羊宫</label>
+                    </p>
+                    <p>
+                      <label>
+                        <input name="tabrad1" type="radio" value="" />
+                       欢乐谷</label>
+                    </p>
+                  </div>
+                  <div class="ui-tab-content clearfix" style="display:none"> 
+                    <p>
+                      <label>
+                        <input name="tabrad1" type="radio" value="" />
+                        春熙路</label>
+                    </p>
+                    <p>
+                      <label>
+                        <input name="tabrad1" type="radio" value="" />
+                        玉林</label>
+                    </p>
+                    <p>
+                      <label>
+                        <input name="tabrad1" type="radio" value="" />
+                        红星路</label>
+                    </p>
+                    <p>
+                      <label>
+                        <input name="tabrad1" type="radio" value="" />
+                        建设路</label>
+                    </p>
+                    <p>
+                      <label>
+                        <input name="tabrad1" type="radio" value="" />
+                        高升桥</label>
+                    </p>
+                    <p>
+                      <label>
+                        <input name="tabrad1" type="radio" value="" />
+                        万年场</label>
+                    </p>
+                    <p>
+                      <label>
+                        <input name="tabrad1" type="radio" value="" />
+                        科华北路</label>
+                    </p>
+                  </div>
+                  <div class="ui-tab-content clearfix" style="display:none">
+                    <p>
+                      <label>
+                        <input name="tabrad1" type="radio" value="" />
+                        一号线</label>
+                    </p>
+                    <p>
+                      <label>
+                        <input name="tabrad1" type="radio" value="" />
+                        二号线</label>
+                    </p>
+                    <p>
+                      <label>
+                        <input name="tabrad1" type="radio" value="" />
+                        三号线</label>
+                    </p>
+                    <p>
+                      <label>
+                        <input name="tabrad1" type="radio" value="" />
+                        四号线</label>
+                    </p>
+                  </div>
+                  <div class="ui-tab-content clearfix" style="display:none">
+                    <p>
+                      <input name="tabrad1" type="radio" value="" />
+                      锦江区</p>
+                    <p>
+                      <input name="tabrad1" type="radio" value="" />
+                      青羊区</p>
+                    <p>
+                      <input name="tabrad1" type="radio" value="" />
+                      金牛区</p>
+                    <p>
+                      <input name="tabrad1" type="radio" value="" />
+                      武侯区</p>
+                    <p>
+                      <input name="tabrad1" type="radio" value="" />
+                      成华区</p>
+                    <p>
+                      <input name="tabrad1" type="radio" value="" />
+                      龙泉驿区</p>
+                    <p>
+                      <input name="tabrad1" type="radio" value="" />
+                      青白江区</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="screen-term">
+          <div class="selectNumberScreen">
+            <div id="selectList" class="screenBox screenBackground">
+              <dl class="listIndex" attr="价格范围">
+                <dt>房间价格</dt>
+                <dd>
+                  <label><a href="javascript:;" values2="" values1="" attrval="不限">不限</a></label>
+                  <label>
+                    <input name="radio2" type="radio" value="" />
+                    <a href="javascript:;" values2="99" values1="1" attrval="1-99">100元以下</a></label>
+                  <label>
+                    <input name="radio2" type="radio" value="" />
+                    <a href="javascript:;" values2="300" values1="100" attrval="100-300">100-300元 </a></label>
+                  <label>
+                    <input name="radio2" type="radio" value="" />
+                    <a href="javascript:;" values2="600" values1="300" attrval="300-600">300-600元</a></label>
+                  <label>
+                    <input name="radio2" type="radio" value="" />
+                    <a href="javascript:;" values2="1500" values1="600" attrval="5000以上">600-1500元</a></label>
+                  <div class="custom"><span>自定义</span>&nbsp;
+                    <input name="" type="text" id="custext1"/>
+                    &nbsp;-&nbsp;
+                    <input name="" type="text" id="custext2"/>
+                    <input name="" type="button" id="cusbtn"/>
+                  </div>
+                </dd>
+              </dl>
+              <dl class=" listIndex" attr="terminal_os_s">
+                <dt>房间户型</dt>
+                <dd>
+                  <label><a href="javascript:;" values2="" values1="" attrval="不限">不限</a> </label>
+                  <label>
+                    <input name="radio2" type="radio" value="" autocomplete="off"/>
+                    <a href="javascript:;" values2="" values1="" attrval="android"> 一室</a> </label>
+                  <label>
+                    <input name="radio2" type="radio" value="" autocomplete="off"/>
+                    <a href="javascript:;" values2="" values1="" attrval="symbian">二室</a></label>
+                  <label>
+                    <input name="radio2" type="radio" value="" autocomplete="off"/>
+                    <a href="javascript:;" values2="" values1="" attrval="百度易平台">三室</a></label>
+                  <label>
+                    <input name="radio2" type="radio" value="" autocomplete="off"/>
+                    <a href="javascript:;" values2="" values1="" attrval="">四室</a></label>
+                  <label>  
+                    <input name="radio2" type="radio" value="" autocomplete="off"/>
+                    <a href="javascript:;" values2="" values1="" attrval="">四室以上</a></label>
+                </dd>
+              </dl>
+              <dl class="listIndex" attr="terminal_brand_s">
+                <dt>房间设施</dt>
+                <dd data-more=true>
+                  <label><a href="javascript:;" values2="" values1="" attrval="不限">不限</a></label>
+                  <label>
+                    <input name="checkbox2" type="checkbox" value="" autocomplete="off"/>
+                    <a href="javascript:;" values2="" values1="" attrval="小米">淋浴</a></label>
+                  <label>
+                    <input name="checkbox2" type="checkbox" value="" autocomplete="off"/>
+                    <a href="javascript:;" values2="" values1="" attrval="华为">空调</a> </label>
+                  <label>
+                    <input name="checkbox2" type="checkbox" value="" autocomplete="off"/>
+                    <a href="javascript:;" values2="" values1="" attrval="lenovo">独卫</a> </label>
+                  <label>
+                    <input name="checkbox2" type="checkbox" value="" autocomplete="off"/>
+                    <a href="javascript:;" values2="" values1="" attrval="zte中兴">WiFi</a></label>
+                    <span class="more"><em class="open"></em>更多</span>
+                   </dd> 
+              </dl>
+              <dl class="listIndex more-none" attr="terminal_brand_s"  style="display:none;border:none">
+                <dt style='visibility:hidden'>房间设施</dt>
+                <dd >
+                  <label style='visibility:hidden'><a href="javascript:;" values2="" values1="" attrval="不限">不限</a></label>
+                  <form action="" method="get"> 
+                      <label><input name="checkbox2" type="checkbox" value="" /><a href="javascript:;" values2="" values1="" attrval="华为">电视</a></label>
+                      <label><input name="checkbox2" type="checkbox" value="" /><a href="javascript:;" values2="" values1="" attrval="华为">允许做饭</a> </label> 
+                      <label><input name="checkbox2" type="checkbox" value="" /><a href="javascript:;" values2="" values1="" attrval="华为">暖气</a> </label>  
+                    </form> 
+              </dl>
+            </div>
+          </div>   
+        </div>
+
+        </div>
+        
+        <div class="hasBeenSelected clearfix"><span id="time-num"><font>208</font>家酒店</span>
+              <div style="float:right;" class="eliminateCriteria">【清空全部】 </div>
+              <dl>
+                <dt>已选条件：</dt>
+                <dd style="DISPLAY: none" class=clearDd>
+                  <div class=clearList></div>
+              </dl>
+            </div>
+          <script type="text/javascript" src="js/shaixuan.js"></script> 
+      </div>
+    </div>
+    <div class="left">
+        <info></info>
+    </div>
+    <div id="right">
+        <div>
+            <iframe src="map.html" width="480" height="550" frameborder="0" scrolling="no" data-0="position:static;" data-top-top="position:fixed;top:0;" data-edge-strategy="set"></iframe>
+        </div>
+    </div>
+</div>
+    <div id="jsContainer" class="jsContainer" style="height:0">
+      <div id="tuna_alert" style="display:none;position:absolute;z-index:999;overflow:hidden;"></div>
+      <div id="tuna_jmpinfo" style="visibility:hidden;position:absolute;z-index:120;"></div>
+    </div>
+    <script type="text/javascript" src="js/fixdiv.js"></script>
+    <script type="text/javascript" src="js/address.js"></script>
+</div>
+
+
+    <template id="info">
+        <ul class="view" >
+          <li v-for="item in items">
+           <a href="goods detial.html"><img :src="item.imgUrl" alt="" /></a>
+            <span class="num" v-text="'￥'+item.price+'起/晚'"></span>
+            <span class="title" v-text='item.title'></span> 
+            <span class="title" v-text="item.desc"></span>
+          </li>
+        </ul>
+    </template>
+
+  <!-- Vuex数据仓库引入 -->
+  <!-- <script src='store/info-store.js'></script> -->
+  <!-- vue全家桶引入 -->
+  <script src='js/vue.js'></script>
+  <script src='js/vuex.js'></script>
+  <script src='js/vue-resource.js'></script>
+  <script>
+    Vue.http.options.emulateJSON=false;
+    Vue.http.headers.post['Content-Type']='application/json';
+  </script>
+  <script src='js/info.js'></script>
+  <script>
+    var vm=new Vue({
+      el:'.left'
+      // store:store
+    });
+  </script>
+  <script type="text/javascript">
+    window.onload = function() {
+        skrollr.init({
+            forceHeight: false
+        });
+    }
+  </script>
+  <script type="text/javascript" src="skrollr.min.js"></script>
+</body>
+</html>

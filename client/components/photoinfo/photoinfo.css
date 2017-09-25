@@ -1,0 +1,70 @@
+.pho_info {
+    text-align: left;
+    height: 125px;
+    display:inline-block;
+}
+.pho_info h4 {
+    font-size: 24px;
+    font-weight: normal;
+    padding-bottom: 0;
+    line-height: 26px;
+    padding-top:10px;
+}
+.pho_info .wrapTop{
+    color: #959ea7;
+    width: 920px;height: 29px;
+}
+.col_pink {
+    color: #f05b72;
+}
+.col_pink a{
+    color: #f05b72;
+    width: 28px;height: 19px;
+}
+.pr5 {
+    padding-right: 5px;
+    display: inline-block;
+     color: #959ea7;
+}
+.labels {
+    display: inline-block;
+    height: 18px;
+    line-height: 18px;
+    font: normal 12px/18px "simsun";
+    color: #959ea7;
+}
+.labels span {
+    display: inline-block;
+    margin-right: 6px;
+}
+.labels span em{
+    font-style: normal;
+}
+.labels span:first-child{
+	color: #f05b72;
+}
+.xinshang_ico {
+    width: 18px;
+    height: 16px;
+}
+.xinshang_ico, .shipai_ico, .suding_ico, .yanzhen_ico, .mensuo_ico, .mianyajin_ico, .tejia_ico, .changzu_ico {
+    background: url(http://jci.xiaozhustatic3.com/e17082301/images/sprice_png24.png) no-repeat 0 -1864px;
+    display: inline-block;
+    vertical-align: -4px;
+    margin-right: 3px;
+}
+.mianyajin_ico {
+    background-position: -98px -1864px;
+    width: 16px;
+    height: 16px;
+}
+.shipai_ico {
+    background-position: -21px -1864px;
+    width: 17px;
+    height: 16px;
+}
+.yanzhen_ico {
+    background-position: -60px -1864px;
+    width: 16px;
+    height: 16px;
+}

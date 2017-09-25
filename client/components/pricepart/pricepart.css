@@ -1,0 +1,19 @@
+.pricepart{
+	width: 310px;height: 46px;
+	display: inline-block;
+}
+.day_l{
+	height: 46px;
+	color: #f05b72;
+	display: inline-block;
+}
+.day_l>span{
+	font-size: 36px;
+}
+.day_r{
+	line-height: 22px;
+	float: right;
+	margin-right: 5px;
+	padding-top: 20px;
+	color: #2c3e50;
+}

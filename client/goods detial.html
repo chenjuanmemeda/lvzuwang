@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商品详情页面</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="Font-Awesome-3.2.1/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/goods detial.css">
+	<link rel="stylesheet" href="components/headerOne/headerOne.css">
+	<link rel="stylesheet" href="components/banner/banner.css">
+	<link rel="stylesheet" href="components/ad/ad.css">
+	
+	<link rel="stylesheet" href="components/time/time.css">
+	<link rel="stylesheet" href="components/clearfix/clearfix.css">
+	<link rel="stylesheet" href="components/pricepart/pricepart.css">
+	<link rel="stylesheet" href="components/order/order.css">
+	<link rel="stylesheet" href="components/ownerinformation/ownerinformation.css">
+	<link rel="stylesheet" href="components/introducePart/introducePart.css">
+	<link rel="stylesheet" href="components/otherRoomPart/otherRoomPart.css">
+	<link rel="stylesheet" href="components/photoinfo/photoinfo.css">
+	
+	<!-- <script type="text/javascript"  src="js/util.js"></script> -->
+		<!-- <script src='components/headerOne/headerOne.js'></script> -->
+	<script type="text/javascript"  src="js/jquery.min.js"></script>
+	<script type="text/javascript"  src="components/ad/ad.js"></script>
+	<script src="laydate/laydate.js"></script>
+	
+
+
+<body>
+	<div id="app">
+		<div class="headerOne" id="nav" data-0="position:static;display:none" data-125="position:fixed;top:0;display:block" data-edge-strategy="set" style="background-color:#243545;z-index:9999;width:100%;height:56px;">
+			<div class="menuLeft">
+				<a href="" class="logo">logo</a>
+				<ul class="typeList">
+					<li><a href="#left">实拍照片</a></li>
+					<li><a href="#introducepart">详细介绍</a></li>
+					<li><a href="#map">地图位置</a></li>
+					<li><a href="#rulesPart">预订须知</a></li>
+					<li><a href="#otherroompart">猜你喜欢</a></li>
+				</ul>
+			</div>
+		</div>
+		<div style="padding:1em;" data-0="display:none;" data-top-top="display:block;" data-anchor-target="#nav" data-edge-strategy="set">&nbsp;</div>
+		<div class="header">
+			<div class="detail_head clearfix" >
+				<div class="logo"><a href="index.html" class="xz.logo_detail"></a></div>
+				<div class="adv">睡在山海间 住进人情里</div>
+				<ul class="nav_R nav_commen">
+					<li><a href="register.html">注册</a></li>
+					<li>|</li>
+					<li><a href="index.html">登录</a></li>
+					<li>|</li>
+					<li><a href="fbindex.html" class="btn_free show-register-box">免费发布房源</a></li>
+				</ul>
+			</div>
+
+		</div>
+		<div class="content">
+			
+				<div class="left" id="left">
+					<photoinfo :likepart='likepart'></photoinfo>
+					<banner></banner>
+					<introducepart :information="information"></introducepart>
+				</div>
+				<div class="right" >
+					<clearfix></clearfix>
+					<div class="rightbg" id="rightbg" data-0="position:absolute;top:215px" data-56="position:fixed;top:68px;" data-2550="position:absolute" data-edge-strategy="set" style="z-index:999;" >
+						<pricepart :information="information"></pricepart>
+						<!-- <chentime></chentime> -->
+						<laydateo></laydateo>
+						<order></order>
+						<owner :owner='owner'></owner>
+						<div class="note">
+						  	<h3>促销公告</h3>
+						  	<div class="notelist">
+							    <ul>
+								    <li><a href="#" target="_blank">步行宽窄巷子文殊院 地铁口精装超值大两居</a></li>
+								    <li><a href="#" target="_blank" class="red">近宽窄巷子临地铁165平方米3卧6-9人套房</a></li>
+								    <li><a href="#" target="_blank">春熙路优质双床套房</a></li>
+								    <li><a href="#" target="_blank" class="red">紧靠春熙路地铁站出口 早安熊猫民宿</a></li>
+							    </ul>
+						 	</div>
+						</div>
+
+					</div>
+					<div style="padding:1em;" data-0="display:none;" data-top-top="display:block;" data-anchor-target="#rightbg" data-edge-strategy="set">&nbsp;</div>
+				</div>
+				
+			<otherroompart :likepart='likepart'></otherroompart>
+		</div>
+		
+		<div class="footer"><div class="footerbg"></div></div>
+		<!-- <alert></alert> -->
+	</div>
+	<!-- vue所有组件模板引入 -->
+	<!-- pho_info -->
+	<template id="photoinfo">
+	 	<div class="pho_info">
+	 		<h4>一位画家设计师的家02/地铁站/宽窄/太古里</h4>
+		 	<div class="wrapTop">
+		 		<div class="col_pink">
+		 			<a href="index.html">小猪  ></a>
+		 			<a href="fyindex.html">成都  >  </a>
+		 			<span class="pr5">四川省成都市青羊区正府街83号SG珊顿道</span>
+		 		</div> 
+		 	</div>
+		 	<div class="labels">
+		 		<span><em class="xinshang_ico"></em>超棒新房</span>
+		 		<span><em class='mianyajin_ico'></em>免押金</span>
+		 		<span><em class='shipai_ico'></em>实拍</span>
+		 		<span ><em class="yanzhen_ico"></em>验真</span>
+		 	</div>
+	 	</div>
+	</template>
+	<!-- banner -->
+	<template id="ChenBanner">
+		<div id="Chen-wrapLeft">
+			<div class="img-container">
+				<div v-for="(item,index) in ChenImgUrlOne"  :class='{ChenShow:index+1==curIndex}' >
+					<img :src='ChenImgUrlOne[index]'>
+				</div>
+			</div>
+			<div class="Chen-thumbnail">
+				<div class="photoShow">
+					<span class="Chen-pre" @click="preChange()"></span>
+					<span class="Chen-next" @click="nextChange()"></span>
+					<!-- <span v-for='(item,index) in ChenImgUrl.length' :class='{ChenActive:index+1==curIndex}' :key='curIndex' @click='smallpicChange(curIndex)'></span> -->
+					<ul class="smallpic">
+						<li v-for='(item,index) in ChenImgUrl' @click="curIndex=index+1" 
+						>
+							<img :src='ChenImgUrl[index]' :class='{ChenActive:index+1==curIndex}'>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</template>
+	
+	
+	<!-- time -->
+	<template id="chentime">
+		<div class="description" id="limit_time" v-html='msgTime'>
+	</template>
+	<!-- clearfix -->
+	<template id="clearfix">
+		<div class="righttop">
+			<ul class="collection">
+				<li><i class="icon-heart-empty"></i>收藏</li>
+				<li><i class="icon-share"></i>分享</li>
+				<li>5分</li>
+				<!-- <li v-for='item in items' :class={"icon-heart-empty":item=="收藏","icon-share":item=="分享",}>
+				</li> -->
+			</ul>
+		</div>
+	</template>
+	<!-- pricepart -->
+	<template id="pricepart">
+		<div class="pricepart">
+			<div class="day_l">￥
+				<span v-text='information.ruleItem.rule_day'></span>  起
+			</div>
+			<chentime></chentime>
+			<div class="day_r">每晚</div>
+		</div>
+	</template>
+	<!-- laydata -->
+	<template id="laydateo">
+		<div style="margin:10px 0px;">
+   			<input onclick="laydate()" placeholder="入住日期">
+   			<input class="laydate-icon" id="demo" onclick="laydate()" placeholder="离开日期">
+		</div>
+	</template>
+	<!-- order -->
+	<template id="order">
+		<div class="order">
+			<div class="reserve">
+					<a href="#">立即预订</a>
+			</div>
+			<div class="datebg">
+				<!-- <span>今天<br>￥298</span> -->
+				<ul class="cal_box">
+					<li>今天<br>￥298</li>
+					<li class="endRent">27<br>已租</li>
+					<li class="endRent">28<br>已租</li>
+					<li>29<br>￥258</li>
+					<li>30<br>￥258</li>
+					<li>全部<br>日历</li>
+				</ul>
+			</div>
+		</div>
+	</template>
+	<!-- owner -->
+	<template id="owner">
+		<div class="ownerMsg">
+			<div class="ownerPic">
+				<img :src='owner.ChenImgUrlThree' alt="">
+			</div>
+			<div class="ownerName">
+				<h6>
+					<a href="#" class="lorderName" v-text='owner.title'></a>
+					<span class="lorder_boy"></span>
+				</h6>
+				<p class="col_green">
+					<span>实名认证</span>
+					<span class="zm_icon" v-text='owner.number'></span>
+				</p>
+			</div>
+			<div class="onlineChat">
+				<span></span>
+				<a href="#">在线聊天</a>
+			</div>
+		</div>
+	</template>
+	<!-- introducePart -->
+	<template id="introducepart">
+		<div class="introducePart" id="introducepart" >
+			<ul class="house_info" >
+	            <li class="border_none">
+                <h6 class="h_ico1" v-text='information.hinfoItem.info_hire'></h6>
+                <p >
+                	<span>房屋面积：<span v-text='information.hinfoItem.info_area'></span></span><br/>
+                	<span>房屋户型：
+                		<span v-text='information.hinfoItem.scale.s'></span>室
+                		<span v-text='information.hinfoItem.scale.t'></span>厅
+                		<span v-text='information.hinfoItem.scale.w'></span>卫
+                		<span v-text='information.hinfoItem.scale.c'></span>厨
+                		<span v-text='information.hinfoItem.scale.yt'></span>阳台
+                	</span> 
+                </p>
+	             </li>
+	             <li>
+	                <h6 class="h_ico2">宜住<span v-text='information.hinfoItem.info_people'></span></h6>
+	                <p v-if="information.hinfoItem.info_yorn=='是'">房客独享整套房屋</p>
+	                <p v-else>与房东共居一套房屋内</p>
+	            </li>
+	            <li>
+	                <h6 class="h_ico3" >共<span v-text='information.hinfoItem.info_beds'></span></h6>
+	                <p>榻榻米：1.8m宽 × 2m长 ×1张<br/></p>
+	            </li>
+         	</ul>
+        	<!-- 个性描述 -->
+        	<div class="box_white clearfix detail_intro_item" hideheight="135" showheight="120" >
+            <div class="info_l">
+                <span class="info_ico1"></span>
+                <p>个性描述</p>
+            </div>
+            <div class="info_r">
+                <div class=" intro_item_content">
+                    <p v-text='information.desItem.des_desc'></p>
+                </div>
+                <div class="open" style="display:none;">查看全部<span></span></div>
+                <div class="stop" style="display:none;">收起<span></span></div>
+            </div>
+        </div>
+        <!-- 内部情况 -->
+        <div class="box_gray clearfix detail_intro_item" hideheight="135" showheight="120" >
+            <div class="info_l">
+                <span class="info_ico2"></span>
+                <p>内部情况</p>
+            </div>
+            <div class="info_r">
+            <div class=" intro_item_content">
+                 <p v-text='information.desItem.des_in'></p>
+             </div>
+            <div class="open" style="display:none;">查看全部<span></span></div>
+                <div class="stop" style="display:none;">收起<span></span></div>
+                </div>
+        </div>
+        <!-- 交通情况 -->
+        <div class="box_white clearfix detail_intro_item" hideheight="135" showheight="120" >
+            <div class="info_l">
+                <span class="info_ico3"></span>
+                <p>交通情况</p>
+            </div>
+            <div class="info_r">
+                <div class=" intro_item_content">
+                    <p v-text='information.desItem.des_trans'></p>
+                </div>
+                <div class="open" style="display:none;">查看全部<span></span></div>
+                <div class="stop" style="display:none;">收起<span></span></div>
+            </div>
+        </div>
+        <!-- 周边情况 -->
+        <div class=" box_gray  clearfix detail_intro_item" hideheight="135" showheight="120" >
+            <div class="info_l">
+                <span class="info_ico4"></span>
+                <p>周边情况</p>
+            </div>
+            <div class="info_r">
+                <div class=" intro_item_content">
+                    <p v-text='information.desItem.des_around'></p>
+                </div>
+                    <div class="open" style="display:none;">查看全部<span></span></div>
+                    <div class="stop" style="display:none;">收起<span></span></div>
+            </div>
+        </div>
+        <!-- 配套设施 -->
+        <div class="box_white clearfix detail_intro_item" hideheight="134" showheight="130" >
+            <div class="info_l">
+                <span class="info_ico5"></span>
+                <p>配套设施</p>
+            </div>
+            <div class="info_r">
+                <div class="intro_item_content">
+                    <ul class="pt_list clearfix">
+                        <li v-for='(tolit,index) in information.facItem.fac_tolit'>
+                        	<span v-text='information.facItem.fac_tolit[index]'></span>
+                        </li>
+                        <li v-for='(elec,index) in information.facItem.fac_elec'>
+                        	<span v-text='information.facItem.fac_elec[index]'></span>
+                        </li>
+                        <li v-for='(ss,index) in information.facItem.fac_ss'>
+                        	<span v-text='information.facItem.fac_ss[index]'></span>
+                        </li>
+                        <li v-for='(require,index) in information.facItem.fac_require'>
+                        	<span v-text='information.facItem.fac_require[index]'></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="open" style="display:none;">查看全部<span></span></div>
+                <div class="stop" style="display:none;">收起<span></span></div>
+            </div>
+        </div>
+        <!-- 入住须知 -->
+        <div class="box_gray clearfix detail_intro_item" hideheight="135" showheight="120" >
+            <div class="info_l">
+                <span class="info_ico6"></span>
+                <p>入住须知</p>
+            </div>
+            <div class="info_r">
+                <div class="info_text_mid">
+                    <ul class="check_con clearfix">
+                        <li>卫生间：<span v-text='information.hinfoItem.info_wc'></span></li>
+                        <li>最少入住天数:<span v-text='information.ruleItem.rule_least'></span></li>
+                        <li>最多入住天数：<span v-text='information.ruleItem.rule_most'></span></li>
+                        <li>是否接待境外人士：<span v-text='information.ruleItem.rule_yorn'></span></li>
+                        <li>被单更换：<span v-text='information.hinfoItem.info_change'></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 地图 -->
+        <div class="map" id="map">
+	        	<iframe src="map2.html" frameborder="0" scrolling="no"></iframe>
+	    </div>
+        <!-- 押金及其他费用    -->
+        <div class="bg_box" id="rulesPart">
+            <div class="clause_box">
+                <h5>押金及其他费用</h5>
+                <p>在线收取押金：<span v-text='information.ruleItem.rule_money'></span>                                                          <a href="http://www.xiaozhu.com/yunying/AlipayTrust"><span class="zhima_deposit_noico">授权芝麻信用享免押 ></span></a>
+                    <br/>
+                    加客费用描述：第三人，不提供被套和加床时免费，提供时加50元。超过三人，每人加50元。<br /></p>
+                <div class="clearfix">
+                    其他额外费用：<span v-text='information.ruleItem.rule_extra'></span>
+                </div>
+            </div>
+        </div>
+        <!-- 房东对房客的要求 -->
+        <div class="bg_box" id="other">
+            <div class="clause_box">
+                <h5>房东对房客的要求</h5>
+                <div v-text='information.ruleItem.rule_other'>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- 预订条款 -->
+        <div class="bg_box" id="rules">
+            <div class="clause_box">
+                <h5>预订条款</h5>
+                <p>订单确认后，在线支付总房款的100%。<br/>额外的服务费用不包含在总房租内，由房东线下收取。<br/>
+                </p>
+            </div>
+        </div>
+        <!--  退订政策-->
+        <div class="bg_box" id="rules">
+	        <div class="clause_box border_none1">
+	            <h5>退订政策</h5>
+	            <div class="order_h">
+
+	            </div>
+		    </div>
+		</div>
+		</div>
+	</template>
+	<!-- 猜你喜欢 -->
+	<template id="otherroompart">
+		<div class="wrap" id="otherroompart">
+			<div class="wrapLike">
+				<div class="show_top">
+					<h4>猜你喜欢</h4>
+					<div class="show_top_r">
+						<a href="#" class="prev_btn"  onclick="return false"  @click="prevBtnChange()"></a>
+						<a href="#" class="next_btn" onclick="return false" @click="nextBtnChange()"></a>
+					</div>
+				</div>
+				<div class="scroll_pic">
+					<ul class="clearfix" id="otherRoomUrl">
+						<li v-for='(pic,index) in 4'>
+							<a href="#">
+								<div class="piclike">
+									<img :src='likepart.ChenImglike[curPic][index]' >
+									<div class="pictext">
+										<div class="result_price" v-text='likepart.rule_day[curPic][index]'>
+										</div>
+									</div>
+								</div>
+								<p v-text="likepart.des_title[curPic][index]"></p>
+								<p class="col_gray" v-text="likepart.info_address[curPic][index]"></p>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</template>
+
+
+
+
+
+	<!-- vue全家桶引入 -->
+	<script src='js/vue.js'></script>
+	<script src='js/vuex.js'></script>
+	<script src='js/vue-resource.js'></script>
+	<script>
+		Vue.http.options.emulateJSON=false;
+		Vue.http.headers.post['Content-Type']='application/json';
+	</script>
+	<!-- Vuex数据仓库引入 -->
+	<script src='store/cstore.js'></script>
+	<!-- vue组件相关js引入 -->
+	<!-- <script src='components/headerOne/headerOne.js'></script> -->
+	<script src='js/skrollr.min.js'></script>
+	<script src='components/banner/banner.js'></script>
+	<script src='components/time/time.js'></script>
+	<script src='components/clearfix/clearfix.js'></script>
+	<script src='components/pricepart/pricepart.js'></script>
+	<script src='components/laydate/laydateme.js'></script>
+	<script src='components/order/order.js'></script>
+	<script src='components/ownerinformation/ownerinformation.js'></script>
+	<script src='components/introducePart/introducePart.js'></script>
+	<script src='components/otherRoomPart/otherRoomPart.js'></script>
+	<script src='components/photoinfo/photoinfo.js'></script>
+	<script>
+		var vm=new Vue({
+			el:'#app',
+			store:store,
+			data:{
+				// information:[],
+				// owner:{},
+				// likepart:{},
+				information:{
+						hinfoItem:{
+									info_address:"四川省成都市锦江区青莲上街5号(镋钯街十字口)锦......",
+									info_hire:"整套出租",
+									info_people:"2人",
+									scale:{
+										s:"3",
+										t:"1",
+										w:"1",
+										c:"1",
+										yt:"2"
+									},
+									info_area:"123平米",
+									info_wc:"独立卫生间",
+									info_yorn:"是",
+									info_beds:"1张",
+									info_change:"每客一换"
+								},
+							
+						desItem:{	
+									des_title:"萧邦酒店公寓 市中心豪华家庭套二豪华间",
+									des_desc:"我们以熊猫为主题，房间简洁大方，主要以日式自然大方的榻榻米为主。100M光纤上网，24小时热水，提供牙刷，牙膏，洗浴用品和吹风机，让你在城市中央拥有家一般的体验。",
+									des_in:"两室一厅一卫，并拥有一个公共空间。大熊猫房有明亮大窗，小熊猫房无窗，床都为1.5米的大床。公共区域提供桌游和书籍供住客阅读。",
+									des_trans:"1. 地铁站：距离春熙路地铁站口几步路之遥。2. 公交车站：由于位于春熙路商圈，公交站口非常多，四通八达。靠近纱帽街公交车站；纱帽南街站；红星路广场南站等。 	3.汽车站：靠近新南门长途汽车站，步行15分钟左右，公交2站左右，非常方便，方便到达省内各个旅游目的地。",
+									des_around:"1.楼宇及小区情况：小区配有保安和电梯外部.2.周围情况:购物中心：位于春熙路繁华商圈，周边有伊势丹，伊藤洋华堂，银石广场，太古里，IFS，苏宁电器，群光广场等购物中心等，应有尽有。4.美食中心：春熙路整个商圈都是美食聚集，各大商场里也有有特色的餐厅，可以根据自己的喜爱做出选择。5.医院：附近有成都第四人民医院，第二人民医院。银行：农行，工行，成都银行，招商银行等。地标：银石广场，或是IFS上爬着的大熊猫屁股",
+									
+						},
+						facItem:{
+									fac_tolit:["独立卫生间"],
+									fac_ss:["wifi","热水器","空调"],
+									fac_require:["允许吸烟"],
+						},
+						ruleItem:{
+									rule_day:'298',
+									rule_money:"400元",
+									rule_extra:"停车位：6",
+									rule_least:"2天",
+									rule_most:"6天",
+									rule_yorn:"接待",
+									rule_other:"当入住了峰哥的house，欢迎你的到来，希望这是你旅行中美丽的回忆，把这里当成自己的家，因为你来了，这里就是你的地盘，你做主，屋内物品都是峰哥为了你们愉快的入住花了心思的，所以请爱惜，保持整洁，厨房只能制作一些简单的料理，用后请清洁干净，当人离开房间时别忘记关闭所有电源，不要在床上吸烟，你的地盘让它美美的，，给你的假期添色，为你的快乐加分，谢谢。",			
+						},
+						housePic:["Chen-images/like1.PNG"]
+							
+						
+				},
+				owner:{
+						ChenImgUrlThree:"Chen-images/owner.jpg",
+						title:'荷香夜色咖啡店',
+						number:'705'
+				},
+				likepart:{
+						ChenImglike:[
+										[
+											"Chen-images/like1.PNG",
+											"Chen-images/like2.PNG",
+											"Chen-images/like3.PNG",
+											"Chen-images/like4.PNG",
+										],
+										[
+											"Chen-images/like5.PNG",
+											"Chen-images/like6.PNG",
+											"Chen-images/like7.PNG",
+											"Chen-images/like8.PNG",
+										],
+										[
+											"Chen-images/like9.PNG",
+											"Chen-images/like10.PNG",
+											"Chen-images/like11.PNG",
+											"Chen-images/like12.PNG",
+										],
+							],
+						rule_day:[
+										[
+											"￥258起/晚",
+											"￥268起/晚",
+											"￥258起/晚",
+											"￥278起/晚",
+										],
+										[
+											"￥258起/晚",
+											"￥258起/晚",
+											"￥298起/晚",
+											"￥208起/晚",
+										],
+										[
+											"￥258起/晚",
+											"￥248起/晚",
+											"￥258起/晚",
+											"￥218起/晚",
+										],
+						],
+						des_title:[
+										[
+											"萧邦酒店公寓 市中心豪华家庭套二豪华间  三",
+											"天府广场边 家庭温馨双床套房近春熙路",
+											"塔子山公园温馨两居室/锦江妇幼/地铁/市区",
+											"火车东站 五桂桥两居室/锦江妇幼/地铁/市区",
+											
+										],
+										[
+											"成都西施公寓 豪华套二房密码锁公寓 中央空调",
+											"二环/万达广场/翡翠城温馨大两居",
+											"攀成钢 牛市口温馨两居/地铁/锦江妇幼/市区",
+											"春熙路太古里宽窄巷子地铁2号线清新2居",
+										],
+										[
+											"南三环宜家旁/	地铁1号线高新站/优质温馨大房",
+											"川师静居寺附近 精致安静（万科物业）靠近地铁",
+											"二环/川大旁/南万达/九眼桥/翡翠城住宅",
+											"孵化园地铁口 奥克斯广场附近单间分享",
+										],
+						],
+						info_address:[
+										[
+											"四川省成都市锦江区青莲上街5号(镋钯街十字口)锦......",
+											"四川省成都市锦江区静秀路55号.",
+											"四川省成都市锦江区琉璃路",
+											"四川省成都市锦江区锦东路",
+										],
+										[
+											"四川省成都市锦江区岳府街55号",
+											"四川省成都市锦江区天府广场/盐市口",
+											"四川省成都市锦江区静秀路55号",
+											"四川省成都市锦江区静秀路55号",
+										],
+										[
+											"四川省成都市国家高新技术产业开发区雍翠路303号...",
+											"四川省成都市锦江区静秀路55号",
+											"四川省成都市锦江区华润路158号",
+											"四川省成都市高新区蜀锦路113号",
+										],
+						],
+
+				}
+			},
+			// methods:{//需要调用才有用
+			// 		deepCopy:function(obj1,obj2){
+			// 			for(var p in obj1){
+			// 				if(Array.isArray(obj1[p]))
+			// 					obj2[p]=obj1[p].slice(0);
+			// 				else if(obj1[p]!=null&&(typeof obj1[p]=='object')){
+			// 					obj2[p]={};
+			// 					arguments.callee(obj1[p],obj2[p]);
+			// 				}else
+			// 					obj2[p]=obj1[p];
+			// 			}
+			// 		},
+			// 		getData:function(){
+			// 			//从服务器拿取数据
+
+			// 			this.$http({
+			// 				url:this.$store.state.grid.url,
+			// 				method:'POST',
+			// 				data:{}
+			// 			}).then(function(res){
+			// 				this.information=res.data.information;//第二个data是键名
+			// 				this.owner=res.data.owner;
+			// 				this.likepart=res.data.likepart;
+			// 			},function(){});
+			// 		},
+			// }
+			
+		});
+	</script>
+	<script type="text/javascript">
+	window.onload = function() {
+		skrollr.init({
+			forceHeight: false
+		});
+	}
+	</script>
+</body>
+</html>

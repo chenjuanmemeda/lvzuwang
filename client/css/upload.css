@@ -1,0 +1,21 @@
+.bbox{width: 100%;height: 100%;}
+.box {
+	width: 100px;
+	height: 100px;
+    position: relative;
+    background-color: pink;
+    border: 1px solid black;
+    margin-left: 30px;
+}
+#photo{
+    position: absolute;
+    left: -9999px;
+}    
+/* 使label充满整个box*/
+.la {
+    position: absolute;
+    top: 0;left: 0;right: 0;bottom: 0;
+    z-index: 10; /* 这个z-index之后说到*/
+}
+#dd{width:990px;}
+.btn{margin-top: 20px;width: 80px;margin-left: 30px;}
